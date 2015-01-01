@@ -1,0 +1,50 @@
+<h2 id="Items">Items</h2>
+
+<div class="btn-group" role="group">
+    <button id="items-filter-all" type="button" class="btn btn-default btn-sm">All</button>
+    <button id="items-filter-acquired" type="button" class="btn btn-default btn-sm">Acquired</button>
+    <button id="items-filter-missing" type="button" class="btn btn-default btn-sm">Missing</button>
+</div>
+
+<table class="table table-hover table-condensed">
+    <col width="5%" />
+    <col width="5%" />
+    <col width="70%" />
+    <col width="20%" />
+    <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Acquired</th>
+    </tr>
+    {% for itemID, bool in save.items %}
+        {% set acquired = save.items[itemID] %}
+        <tr class="item {% if acquired %}item-acquired{% else %}item-missing{% endif %}">
+            <td>{{ itemID }}</td>
+            <td><img src="/static/items/{{ "%03d"|format(itemID) }}.png" /></td>
+            <td>{{ catalogue.items[itemID] }}</td>
+            <td>
+                {% if acquired %}
+                    <span class="glyphicon glyphicon-ok text-success"></span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('#items-filter-all').on('click', function() {
+            $('.item').show();
+        });
+        $('#items-filter-acquired').on('click', function() {
+            $('.item-acquired').show();
+            $('.item-missing').hide();
+        });
+        $('#items-filter-missing').on('click', function() {
+            $('.item-acquired').hide();
+            $('.item-missing').show();
+        });
+    });
+
+</script>

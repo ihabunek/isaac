@@ -1,0 +1,49 @@
+<h2 id="Achievements">Achievements</h2>
+
+<div class="btn-group" role="group">
+    <button id="achievements-filter-all" type="button" class="btn btn-default btn-sm">All</button>
+    <button id="achievements-filter-acquired" type="button" class="btn btn-default btn-sm">Acquired</button>
+    <button id="achievements-filter-missing" type="button" class="btn btn-default btn-sm">Missing</button>
+</div>
+
+<table class="table table-hover table-condensed">
+    <col width="5%" />
+    <col width="30%" />
+    <col width="60%" />
+    <col width="5%" />
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Hint</th>
+        <th>Acquired</th>
+    </tr>
+    {% for achievementID, bool in save.achievements %}
+        {% set acquired = save.achievements[achievementID] %}
+        <tr class="achievement {% if acquired %}achievement-acquired{% else %}achievement-missing{% endif %}">
+            <td>{{ achievementID }}</td>
+            <td>{{ catalogue.achievements[achievementID] }}</td>
+            <td>{{ catalogue.achievementHints[achievementID] }}</td>
+            <td>
+                {% if acquired %}
+                    <span class="glyphicon glyphicon-ok text-success"></span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('#achievements-filter-all').on('click', function() {
+            $('.achievement').show();
+        });
+        $('#achievements-filter-acquired').on('click', function() {
+            $('.achievement-acquired').show();
+            $('.achievement-missing').hide();
+        });
+        $('#achievements-filter-missing').on('click', function() {
+            $('.achievement-acquired').hide();
+            $('.achievement-missing').show();
+        });
+    });
+</script>

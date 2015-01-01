@@ -1,0 +1,23 @@
+<h2 id="Bosses">Bosses</h2>
+
+<table class="table table-hover table-condensed">
+    <col width="10%" />
+    <col width="70%" />
+    <col width="20%" />
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Defeated</th>
+    </tr>
+    {% for bossID, bool in save.bosses %}
+        <tr>
+            <td>{{ bossID }}</td>
+            <td>{{ catalogue.bosses[bossID] }}</td>
+            <td>
+                {% if save.bosses[bossID] %}
+                    <span class="glyphicon glyphicon-ok text-success"></span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>

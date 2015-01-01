@@ -1,0 +1,20 @@
+{
+    "name": "ihabunek/isaac",
+    "description": "Save game interpreter for Binding of Isaac: Rebirth",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ivan Habunek",
+            "email": "ivan.habunek@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bezdomni\\IsaacRebirth\\": "src"
+        }
+    },
+    "require": {
+        "silex/silex": "~1.2",
+        "twig/twig": "~1.16"
+    }
+}

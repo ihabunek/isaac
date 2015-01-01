@@ -71,6 +71,10 @@ class Controller
             "catalogue" => $save->catalogue()
         ];
 
-        return $app['twig']->render("show.twig", $data);
+        $content = $app['twig']->render("show.twig", $data);
+
+        return new Response($content, 200, [
+            'Cache-Control' => 's-maxage=86400'
+        ]);
     }
 }

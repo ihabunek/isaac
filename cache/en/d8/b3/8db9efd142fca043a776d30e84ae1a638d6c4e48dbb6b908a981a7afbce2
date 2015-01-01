@@ -1,0 +1,4615 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binding of Isaac: Rebirth - Savegame Parser</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/flatly/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        section, header, footer {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header, footer {
+            margin-top: 20px;
+        }
+        footer {
+            border-top: 1px solid rgb(44, 62, 80);
+            margin-top: 30px;
+            padding-top: 30px;
+            text-align: center;
+        }
+        table tr {
+            border-bottom: 1px solid #ddd;
+        }
+        h1, h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .table-stats {
+            max-width: 300px;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+        </head>
+<body>
+    <div class="container">
+        <section>
+            
+    <h1>Binding of Isaac: Rebirth Savegame Parser</h1>
+    <a href="/">&laquo; Go back</a>
+    <h2>Savegame info</h2>
+
+    <h4>Jump to:</h4>
+    <a class="btn btn-primary btn-xs" href="#Stats">Stats</a>
+    <a class="btn btn-primary btn-xs" href="#Bosses">Bosses</a>
+    <a class="btn btn-primary btn-xs" href="#Items">Items</a>
+    <a class="btn btn-primary btn-xs" href="#Achievements">Achievements</a>
+
+    <h2 id="Stats">Stats</h2>
+
+<table class="table table-hover table-condensed table-stats">
+    <col width="80%" />
+    <tr><td>Rocks exploded</td><td>4982</td></tr>
+    <tr><td>Marked rocks exploded</td><td>183</td></tr>
+    <tr><td>Poops destroyed</td><td>3036</td></tr>
+    <tr><td>Pills eaten</td><td>561</td></tr>
+    <tr><td>Death card used</td><td>5</td></tr>
+    <tr><td>Arcades entered</td><td>42</td></tr>
+    <tr><td>Shopkeepers exploded</td><td>54</td></tr>
+    <tr><td>Shell games played</td><td>150</td></tr>
+    <tr><td>Angel deals taken</td><td>17</td></tr>
+    <tr><td>Devil deals taken</td><td>117</td></tr>
+    <tr><td>Blood donated</td><td>99</td></tr>
+    <tr><td>Arcades exploded</td><td>11</td></tr>
+    <tr><td>Coins donated</td><td>506</td></tr>
+</table >
+
+<h3>Wins &amp; losses</h3>
+
+<table class="table table-hover table-condensed table-stats">
+    <col width="80%" />
+    <tr><td>Current win streak</td><td>0</td></tr>
+    <tr><td>Current loss streak</td><td>7</td></tr>
+    <tr><td>Best win streak</td><td>4</td></tr>
+    <tr><td>Win count</td><td>27</td></tr>
+    <tr><td>Deaths</td><td>74</td></tr>
+    <tr><td>Mom kills</td><td>31</td></tr>
+    <tr><td>Eden tokens</td><td>24</td></tr>
+</table >
+
+<h3>Boss kills</h3>
+
+<table class="table table-hover table-condensed table-stats">
+    <col width="80%" />
+    <tr><td>Basement 1</td><td>96</td></tr>
+    <tr><td>Basement 2</td><td>85</td></tr>
+    <tr><td>Caves 1</td><td>64</td></tr>
+    <tr><td>Caves 2</td><td>58</td></tr>
+    <tr><td>Depths 1</td><td>41</td></tr>
+    <tr><td>Depths 2</td><td>53</td></tr>
+    <tr><td>Womb 1</td><td>33</td></tr>
+    <tr><td>Womb 2</td><td>33</td></tr>
+    <tr><td>Sheol</td><td>22</td></tr>
+</table>
+    <h2 id="Bosses">Bosses</h2>
+
+<table class="table table-hover table-condensed">
+    <col width="10%" />
+    <col width="70%" />
+    <col width="20%" />
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Defeated</th>
+    </tr>
+            <tr>
+            <td>1</td>
+            <td>Monstro</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>2</td>
+            <td>Larry Jr.</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>3</td>
+            <td>Chub</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>4</td>
+            <td>Gurdy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>5</td>
+            <td>Monstro II</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>6</td>
+            <td>Mom</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>7</td>
+            <td>Scolex</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>8</td>
+            <td>Mom&#039;s Heart</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>9</td>
+            <td>Famine</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>10</td>
+            <td>Pestilence</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>11</td>
+            <td>War</td>
+            <td>
+                            </td>
+        </tr>
+            <tr>
+            <td>12</td>
+            <td>Death</td>
+            <td>
+                            </td>
+        </tr>
+            <tr>
+            <td>13</td>
+            <td>Duke of Flies</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>14</td>
+            <td>Peep</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>15</td>
+            <td>Loki</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>16</td>
+            <td>Blastocyst</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>17</td>
+            <td>Gemini</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>18</td>
+            <td>Fistula</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>19</td>
+            <td>Gish</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>20</td>
+            <td>Steven</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>21</td>
+            <td>C.H.A.D.</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>22</td>
+            <td>Headless Horseman</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>23</td>
+            <td>The Fallen</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>24</td>
+            <td>Satan</td>
+            <td>
+                            </td>
+        </tr>
+            <tr>
+            <td>25</td>
+            <td>It Lives!</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>26</td>
+            <td>The Hollow</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>27</td>
+            <td>The Carrion Queen</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>28</td>
+            <td>Gurdy Jr.</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>29</td>
+            <td>The Husk</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>30</td>
+            <td>The Bloat</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>31</td>
+            <td>Lokii</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>32</td>
+            <td>The Blighted Ovum</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>33</td>
+            <td>Teratoma</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>34</td>
+            <td>The Widow</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>35</td>
+            <td>Mask of Infamy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>36</td>
+            <td>The Wretched</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>37</td>
+            <td>Pin</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>38</td>
+            <td>Conquest</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>39</td>
+            <td>Isaac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>40</td>
+            <td>???</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>41</td>
+            <td>Daddy Long Legs</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>42</td>
+            <td>Triachnid</td>
+            <td>
+                            </td>
+        </tr>
+            <tr>
+            <td>43</td>
+            <td>The Haunt</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>44</td>
+            <td>Dingle</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>45</td>
+            <td>Mega Maw</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>46</td>
+            <td>Mega Maw II</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>47</td>
+            <td>Mega Fatty</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>48</td>
+            <td>Mega Fatty II</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>49</td>
+            <td>Mega Gurdy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>50</td>
+            <td>Dark One</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>51</td>
+            <td>Dark One II</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>52</td>
+            <td>Polycephalus</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>53</td>
+            <td>Mega Fred</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>54</td>
+            <td>The Lamb</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+            <tr>
+            <td>55</td>
+            <td>Mega Satan</td>
+            <td>
+                            </td>
+        </tr>
+            <tr>
+            <td>56</td>
+            <td>Gurglings</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+    </table>    <h2 id="Items">Items</h2>
+
+<div class="btn-group" role="group">
+    <button id="items-filter-all" type="button" class="btn btn-default btn-sm">All</button>
+    <button id="items-filter-acquired" type="button" class="btn btn-default btn-sm">Acquired</button>
+    <button id="items-filter-missing" type="button" class="btn btn-default btn-sm">Missing</button>
+</div>
+
+<table class="table table-hover table-condensed">
+    <col width="5%" />
+    <col width="5%" />
+    <col width="70%" />
+    <col width="20%" />
+    <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Acquired</th>
+    </tr>
+                    <tr class="item item-missing">
+            <td>1</td>
+            <td><img src="/static/items/001.png" /></td>
+            <td>The Sad Onion</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>2</td>
+            <td><img src="/static/items/002.png" /></td>
+            <td>The Inner Eye</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>3</td>
+            <td><img src="/static/items/003.png" /></td>
+            <td>Spoon Bender</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>4</td>
+            <td><img src="/static/items/004.png" /></td>
+            <td>Cricket&#039;s Head</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>5</td>
+            <td><img src="/static/items/005.png" /></td>
+            <td>My Reflection</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>6</td>
+            <td><img src="/static/items/006.png" /></td>
+            <td>Number One</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>7</td>
+            <td><img src="/static/items/007.png" /></td>
+            <td>Blood of the Martyr</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>8</td>
+            <td><img src="/static/items/008.png" /></td>
+            <td>Brother Bobby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>9</td>
+            <td><img src="/static/items/009.png" /></td>
+            <td>Skatole</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>10</td>
+            <td><img src="/static/items/010.png" /></td>
+            <td>Halo of Flies</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>11</td>
+            <td><img src="/static/items/011.png" /></td>
+            <td>1UP</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>12</td>
+            <td><img src="/static/items/012.png" /></td>
+            <td>Magic Mushroom</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>13</td>
+            <td><img src="/static/items/013.png" /></td>
+            <td>The Virus</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>14</td>
+            <td><img src="/static/items/014.png" /></td>
+            <td>Roid Rage</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>15</td>
+            <td><img src="/static/items/015.png" /></td>
+            <td>&lt;3</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>16</td>
+            <td><img src="/static/items/016.png" /></td>
+            <td>Raw Liver</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>17</td>
+            <td><img src="/static/items/017.png" /></td>
+            <td>Skeleton Key</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>18</td>
+            <td><img src="/static/items/018.png" /></td>
+            <td>A Dollar</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>19</td>
+            <td><img src="/static/items/019.png" /></td>
+            <td>Boom!</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>20</td>
+            <td><img src="/static/items/020.png" /></td>
+            <td>Transcendence</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>21</td>
+            <td><img src="/static/items/021.png" /></td>
+            <td>The Compass</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>22</td>
+            <td><img src="/static/items/022.png" /></td>
+            <td>Lunch</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>23</td>
+            <td><img src="/static/items/023.png" /></td>
+            <td>Dinner</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>24</td>
+            <td><img src="/static/items/024.png" /></td>
+            <td>Dessert</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>25</td>
+            <td><img src="/static/items/025.png" /></td>
+            <td>Breakfast</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>26</td>
+            <td><img src="/static/items/026.png" /></td>
+            <td>Rotten Meat</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>27</td>
+            <td><img src="/static/items/027.png" /></td>
+            <td>Wooden Spoon</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>28</td>
+            <td><img src="/static/items/028.png" /></td>
+            <td>The Belt</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>29</td>
+            <td><img src="/static/items/029.png" /></td>
+            <td>Mom&#039;s Underwear</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>30</td>
+            <td><img src="/static/items/030.png" /></td>
+            <td>Mom&#039;s Heels</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>31</td>
+            <td><img src="/static/items/031.png" /></td>
+            <td>Mom&#039;s Lipstick</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>32</td>
+            <td><img src="/static/items/032.png" /></td>
+            <td>Wire Coat Hanger</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>33</td>
+            <td><img src="/static/items/033.png" /></td>
+            <td>The Bible</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>34</td>
+            <td><img src="/static/items/034.png" /></td>
+            <td>The Book of Belial</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>35</td>
+            <td><img src="/static/items/035.png" /></td>
+            <td>The Necronomicon</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>36</td>
+            <td><img src="/static/items/036.png" /></td>
+            <td>The Poop</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>37</td>
+            <td><img src="/static/items/037.png" /></td>
+            <td>Mr. Boom</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>38</td>
+            <td><img src="/static/items/038.png" /></td>
+            <td>Tammy&#039;s Head</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>39</td>
+            <td><img src="/static/items/039.png" /></td>
+            <td>Mom&#039;s Bra</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>40</td>
+            <td><img src="/static/items/040.png" /></td>
+            <td>Kamikaze</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>41</td>
+            <td><img src="/static/items/041.png" /></td>
+            <td>Mom&#039;s Pad</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>42</td>
+            <td><img src="/static/items/042.png" /></td>
+            <td>Bob&#039;s Rotten Head</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>44</td>
+            <td><img src="/static/items/044.png" /></td>
+            <td>Teleport</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>45</td>
+            <td><img src="/static/items/045.png" /></td>
+            <td>Yum Heart</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>46</td>
+            <td><img src="/static/items/046.png" /></td>
+            <td>Lucky Foot</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>47</td>
+            <td><img src="/static/items/047.png" /></td>
+            <td>Doctor&#039;s Remote</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>48</td>
+            <td><img src="/static/items/048.png" /></td>
+            <td>Cupid&#039;s Arrow</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>49</td>
+            <td><img src="/static/items/049.png" /></td>
+            <td>Shoop Da Whoop</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>50</td>
+            <td><img src="/static/items/050.png" /></td>
+            <td>Steven</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>51</td>
+            <td><img src="/static/items/051.png" /></td>
+            <td>Pentagram</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>52</td>
+            <td><img src="/static/items/052.png" /></td>
+            <td>Dr. Fetus</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>53</td>
+            <td><img src="/static/items/053.png" /></td>
+            <td>Magneto</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>54</td>
+            <td><img src="/static/items/054.png" /></td>
+            <td>Treasure Map</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>55</td>
+            <td><img src="/static/items/055.png" /></td>
+            <td>Mom&#039;s Eye</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>56</td>
+            <td><img src="/static/items/056.png" /></td>
+            <td>Lemon Mishap</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>57</td>
+            <td><img src="/static/items/057.png" /></td>
+            <td>Distant Admiration</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>58</td>
+            <td><img src="/static/items/058.png" /></td>
+            <td>Book of Shadows</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>60</td>
+            <td><img src="/static/items/060.png" /></td>
+            <td>The Ladder</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>62</td>
+            <td><img src="/static/items/062.png" /></td>
+            <td>Charm of the Vampire</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>63</td>
+            <td><img src="/static/items/063.png" /></td>
+            <td>The Battery</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>64</td>
+            <td><img src="/static/items/064.png" /></td>
+            <td>Steam Sale</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>65</td>
+            <td><img src="/static/items/065.png" /></td>
+            <td>Anarchist&#039;s Cookbook</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>66</td>
+            <td><img src="/static/items/066.png" /></td>
+            <td>The Hourglass</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>67</td>
+            <td><img src="/static/items/067.png" /></td>
+            <td>Sister Maggy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>68</td>
+            <td><img src="/static/items/068.png" /></td>
+            <td>Technology</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>69</td>
+            <td><img src="/static/items/069.png" /></td>
+            <td>Chocolate Milk</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>70</td>
+            <td><img src="/static/items/070.png" /></td>
+            <td>Growth Hormones</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>71</td>
+            <td><img src="/static/items/071.png" /></td>
+            <td>Mini Mush</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>72</td>
+            <td><img src="/static/items/072.png" /></td>
+            <td>Rosary</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>73</td>
+            <td><img src="/static/items/073.png" /></td>
+            <td>Cube of Meat</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>74</td>
+            <td><img src="/static/items/074.png" /></td>
+            <td>A Quarter</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>75</td>
+            <td><img src="/static/items/075.png" /></td>
+            <td>PhD</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>76</td>
+            <td><img src="/static/items/076.png" /></td>
+            <td>X-Ray Vision</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>77</td>
+            <td><img src="/static/items/077.png" /></td>
+            <td>My Little Unicorn</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>78</td>
+            <td><img src="/static/items/078.png" /></td>
+            <td>Book of Revelations</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>79</td>
+            <td><img src="/static/items/079.png" /></td>
+            <td>The Mark</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>80</td>
+            <td><img src="/static/items/080.png" /></td>
+            <td>The Pact</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>81</td>
+            <td><img src="/static/items/081.png" /></td>
+            <td>Dead Cat</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>82</td>
+            <td><img src="/static/items/082.png" /></td>
+            <td>Lord of the Pit</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>83</td>
+            <td><img src="/static/items/083.png" /></td>
+            <td>The Nail</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>84</td>
+            <td><img src="/static/items/084.png" /></td>
+            <td>We Need To Go Deeper</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>85</td>
+            <td><img src="/static/items/085.png" /></td>
+            <td>Deck of Cards</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>86</td>
+            <td><img src="/static/items/086.png" /></td>
+            <td>Monstro&#039;s Tooth</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>87</td>
+            <td><img src="/static/items/087.png" /></td>
+            <td>Loki&#039;s Horns</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>88</td>
+            <td><img src="/static/items/088.png" /></td>
+            <td>Little Chubby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>89</td>
+            <td><img src="/static/items/089.png" /></td>
+            <td>Spider Bite</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>90</td>
+            <td><img src="/static/items/090.png" /></td>
+            <td>The Small Rock</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>91</td>
+            <td><img src="/static/items/091.png" /></td>
+            <td>Spelunker Hat</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>92</td>
+            <td><img src="/static/items/092.png" /></td>
+            <td>Super Bandage</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>93</td>
+            <td><img src="/static/items/093.png" /></td>
+            <td>The Gamekid</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>94</td>
+            <td><img src="/static/items/094.png" /></td>
+            <td>Sack of Pennies</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>95</td>
+            <td><img src="/static/items/095.png" /></td>
+            <td>Robo-Baby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>96</td>
+            <td><img src="/static/items/096.png" /></td>
+            <td>Little C.H.A.D.</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>97</td>
+            <td><img src="/static/items/097.png" /></td>
+            <td>The Book of Sin</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>98</td>
+            <td><img src="/static/items/098.png" /></td>
+            <td>The Relic</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>99</td>
+            <td><img src="/static/items/099.png" /></td>
+            <td>Little Gish</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>100</td>
+            <td><img src="/static/items/100.png" /></td>
+            <td>Little Steven</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>101</td>
+            <td><img src="/static/items/101.png" /></td>
+            <td>The Halo</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>102</td>
+            <td><img src="/static/items/102.png" /></td>
+            <td>Mom&#039;s Bottle of Pills</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>103</td>
+            <td><img src="/static/items/103.png" /></td>
+            <td>The Common Cold</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>104</td>
+            <td><img src="/static/items/104.png" /></td>
+            <td>The Parasite</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>105</td>
+            <td><img src="/static/items/105.png" /></td>
+            <td>The D6</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>106</td>
+            <td><img src="/static/items/106.png" /></td>
+            <td>Mr. Mega</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>107</td>
+            <td><img src="/static/items/107.png" /></td>
+            <td>Pinking Shears</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>108</td>
+            <td><img src="/static/items/108.png" /></td>
+            <td>The Wafer</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>109</td>
+            <td><img src="/static/items/109.png" /></td>
+            <td>Money = Power</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>110</td>
+            <td><img src="/static/items/110.png" /></td>
+            <td>Mom&#039;s Contacts</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>111</td>
+            <td><img src="/static/items/111.png" /></td>
+            <td>The Bean</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>112</td>
+            <td><img src="/static/items/112.png" /></td>
+            <td>Guardian Angel</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>113</td>
+            <td><img src="/static/items/113.png" /></td>
+            <td>Demon Baby</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>114</td>
+            <td><img src="/static/items/114.png" /></td>
+            <td>Mom&#039;s Knife</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>115</td>
+            <td><img src="/static/items/115.png" /></td>
+            <td>Ouija Board</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>116</td>
+            <td><img src="/static/items/116.png" /></td>
+            <td>9 Volt</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>117</td>
+            <td><img src="/static/items/117.png" /></td>
+            <td>Dead Bird</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>118</td>
+            <td><img src="/static/items/118.png" /></td>
+            <td>Brimstone</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>119</td>
+            <td><img src="/static/items/119.png" /></td>
+            <td>Blood Bag</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>120</td>
+            <td><img src="/static/items/120.png" /></td>
+            <td>Odd Mushroom (Thin)</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>121</td>
+            <td><img src="/static/items/121.png" /></td>
+            <td>Odd Mushroom (Thick)</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>122</td>
+            <td><img src="/static/items/122.png" /></td>
+            <td>Whore of Babylon</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>123</td>
+            <td><img src="/static/items/123.png" /></td>
+            <td>Monster Manual</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>124</td>
+            <td><img src="/static/items/124.png" /></td>
+            <td>Dead Sea Scrolls</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>125</td>
+            <td><img src="/static/items/125.png" /></td>
+            <td>Bobby - Bomb</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>126</td>
+            <td><img src="/static/items/126.png" /></td>
+            <td>Razor Blade</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>127</td>
+            <td><img src="/static/items/127.png" /></td>
+            <td>Forget Me Now</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>128</td>
+            <td><img src="/static/items/128.png" /></td>
+            <td>Forever Alone</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>129</td>
+            <td><img src="/static/items/129.png" /></td>
+            <td>Bucket of Lard</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>130</td>
+            <td><img src="/static/items/130.png" /></td>
+            <td>A Pony</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>131</td>
+            <td><img src="/static/items/131.png" /></td>
+            <td>Bomb Bag</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>132</td>
+            <td><img src="/static/items/132.png" /></td>
+            <td>A Lump of Coal</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>133</td>
+            <td><img src="/static/items/133.png" /></td>
+            <td>Guppy&#039;s Paw</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>134</td>
+            <td><img src="/static/items/134.png" /></td>
+            <td>Guppy&#039;s Tail</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>135</td>
+            <td><img src="/static/items/135.png" /></td>
+            <td>IV Bag</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>136</td>
+            <td><img src="/static/items/136.png" /></td>
+            <td>Best Friend</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>137</td>
+            <td><img src="/static/items/137.png" /></td>
+            <td>Remote Detonator</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>138</td>
+            <td><img src="/static/items/138.png" /></td>
+            <td>Stigmata</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>139</td>
+            <td><img src="/static/items/139.png" /></td>
+            <td>Mom&#039;s Purse</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>140</td>
+            <td><img src="/static/items/140.png" /></td>
+            <td>Bob&#039;s Curse</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>141</td>
+            <td><img src="/static/items/141.png" /></td>
+            <td>Pageant Boy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>142</td>
+            <td><img src="/static/items/142.png" /></td>
+            <td>Scapular</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>143</td>
+            <td><img src="/static/items/143.png" /></td>
+            <td>Speed Ball</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>144</td>
+            <td><img src="/static/items/144.png" /></td>
+            <td>Bum Friend</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>145</td>
+            <td><img src="/static/items/145.png" /></td>
+            <td>Guppy&#039;s Head</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>146</td>
+            <td><img src="/static/items/146.png" /></td>
+            <td>Prayer Card</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>147</td>
+            <td><img src="/static/items/147.png" /></td>
+            <td>Notched Axe</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>148</td>
+            <td><img src="/static/items/148.png" /></td>
+            <td>Infestation</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>149</td>
+            <td><img src="/static/items/149.png" /></td>
+            <td>Ipecac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>150</td>
+            <td><img src="/static/items/150.png" /></td>
+            <td>Tough Love</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>151</td>
+            <td><img src="/static/items/151.png" /></td>
+            <td>The Mulligan</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>152</td>
+            <td><img src="/static/items/152.png" /></td>
+            <td>Technology 2</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>153</td>
+            <td><img src="/static/items/153.png" /></td>
+            <td>Mutant Spider</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>154</td>
+            <td><img src="/static/items/154.png" /></td>
+            <td>Chemical Peel</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>155</td>
+            <td><img src="/static/items/155.png" /></td>
+            <td>The Peeper</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>156</td>
+            <td><img src="/static/items/156.png" /></td>
+            <td>Habit</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>157</td>
+            <td><img src="/static/items/157.png" /></td>
+            <td>Bloody Lust</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>158</td>
+            <td><img src="/static/items/158.png" /></td>
+            <td>Crystal Ball</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>159</td>
+            <td><img src="/static/items/159.png" /></td>
+            <td>Spirit of the Night</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>160</td>
+            <td><img src="/static/items/160.png" /></td>
+            <td>Crack The Sky</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>161</td>
+            <td><img src="/static/items/161.png" /></td>
+            <td>Ankh</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>162</td>
+            <td><img src="/static/items/162.png" /></td>
+            <td>Celtic Cross</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>163</td>
+            <td><img src="/static/items/163.png" /></td>
+            <td>Ghost Baby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>164</td>
+            <td><img src="/static/items/164.png" /></td>
+            <td>The Candle</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>165</td>
+            <td><img src="/static/items/165.png" /></td>
+            <td>Cat-O-Nine-Tails</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>166</td>
+            <td><img src="/static/items/166.png" /></td>
+            <td>D20</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>167</td>
+            <td><img src="/static/items/167.png" /></td>
+            <td>Harlequin Baby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>168</td>
+            <td><img src="/static/items/168.png" /></td>
+            <td>Epic Fetus</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>169</td>
+            <td><img src="/static/items/169.png" /></td>
+            <td>Polyphemus</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>170</td>
+            <td><img src="/static/items/170.png" /></td>
+            <td>Daddy Longlegs</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>171</td>
+            <td><img src="/static/items/171.png" /></td>
+            <td>Spider Butt</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>172</td>
+            <td><img src="/static/items/172.png" /></td>
+            <td>Sacrificial Dagger</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>173</td>
+            <td><img src="/static/items/173.png" /></td>
+            <td>Mitre</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>174</td>
+            <td><img src="/static/items/174.png" /></td>
+            <td>Rainbow Baby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>175</td>
+            <td><img src="/static/items/175.png" /></td>
+            <td>Dad&#039;s Key</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>176</td>
+            <td><img src="/static/items/176.png" /></td>
+            <td>Stem Cells</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>177</td>
+            <td><img src="/static/items/177.png" /></td>
+            <td>Portable Slot</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>178</td>
+            <td><img src="/static/items/178.png" /></td>
+            <td>Holy Water</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>179</td>
+            <td><img src="/static/items/179.png" /></td>
+            <td>Fate</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>180</td>
+            <td><img src="/static/items/180.png" /></td>
+            <td>The Black Bean</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>181</td>
+            <td><img src="/static/items/181.png" /></td>
+            <td>White Pony</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>182</td>
+            <td><img src="/static/items/182.png" /></td>
+            <td>Sacred Heart</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>183</td>
+            <td><img src="/static/items/183.png" /></td>
+            <td>Toothpicks</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>184</td>
+            <td><img src="/static/items/184.png" /></td>
+            <td>Holy Grail</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>185</td>
+            <td><img src="/static/items/185.png" /></td>
+            <td>Dead Dove</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>186</td>
+            <td><img src="/static/items/186.png" /></td>
+            <td>Blood Rights</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>187</td>
+            <td><img src="/static/items/187.png" /></td>
+            <td>Guppy&#039;s Hairball</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>188</td>
+            <td><img src="/static/items/188.png" /></td>
+            <td>Abel</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>189</td>
+            <td><img src="/static/items/189.png" /></td>
+            <td>SMB Super Fan</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>190</td>
+            <td><img src="/static/items/190.png" /></td>
+            <td>Pyro</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>191</td>
+            <td><img src="/static/items/191.png" /></td>
+            <td>3 Dollar Bill</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>192</td>
+            <td><img src="/static/items/192.png" /></td>
+            <td>Telepathy for Dummies</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>193</td>
+            <td><img src="/static/items/193.png" /></td>
+            <td>MEAT!</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>194</td>
+            <td><img src="/static/items/194.png" /></td>
+            <td>Magic 8 Ball</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>195</td>
+            <td><img src="/static/items/195.png" /></td>
+            <td>Mom&#039;s Coin Purse</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>196</td>
+            <td><img src="/static/items/196.png" /></td>
+            <td>Squeezy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>197</td>
+            <td><img src="/static/items/197.png" /></td>
+            <td>Jesus Juice</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>198</td>
+            <td><img src="/static/items/198.png" /></td>
+            <td>Box</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>199</td>
+            <td><img src="/static/items/199.png" /></td>
+            <td>Mom&#039;s Key</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>200</td>
+            <td><img src="/static/items/200.png" /></td>
+            <td>Mom&#039;s Eyeshadow</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>201</td>
+            <td><img src="/static/items/201.png" /></td>
+            <td>Iron Bar</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>202</td>
+            <td><img src="/static/items/202.png" /></td>
+            <td>Midas Touch</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>203</td>
+            <td><img src="/static/items/203.png" /></td>
+            <td>Humbleing Bundle</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>204</td>
+            <td><img src="/static/items/204.png" /></td>
+            <td>Fanny pack</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>205</td>
+            <td><img src="/static/items/205.png" /></td>
+            <td>Sharp plug</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>206</td>
+            <td><img src="/static/items/206.png" /></td>
+            <td>The Guillotine</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>207</td>
+            <td><img src="/static/items/207.png" /></td>
+            <td>Ball of Bandages</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>208</td>
+            <td><img src="/static/items/208.png" /></td>
+            <td>Champion Belt</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>209</td>
+            <td><img src="/static/items/209.png" /></td>
+            <td>Butt Bombs</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>210</td>
+            <td><img src="/static/items/210.png" /></td>
+            <td>Gnawed Leaf</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>211</td>
+            <td><img src="/static/items/211.png" /></td>
+            <td>Spiderbaby</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>212</td>
+            <td><img src="/static/items/212.png" /></td>
+            <td>Guppy&#039;s Collar</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>213</td>
+            <td><img src="/static/items/213.png" /></td>
+            <td>Lost Contact</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>214</td>
+            <td><img src="/static/items/214.png" /></td>
+            <td>Anemic</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>215</td>
+            <td><img src="/static/items/215.png" /></td>
+            <td>Goat Head</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>216</td>
+            <td><img src="/static/items/216.png" /></td>
+            <td>Ceremonial Robes</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>217</td>
+            <td><img src="/static/items/217.png" /></td>
+            <td>Mom&#039;s Wig</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>218</td>
+            <td><img src="/static/items/218.png" /></td>
+            <td>Placenta</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>219</td>
+            <td><img src="/static/items/219.png" /></td>
+            <td>Old Bandage</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>220</td>
+            <td><img src="/static/items/220.png" /></td>
+            <td>Sad Bombs</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>221</td>
+            <td><img src="/static/items/221.png" /></td>
+            <td>Rubber Cement</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>222</td>
+            <td><img src="/static/items/222.png" /></td>
+            <td>Anti-Gravity</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>223</td>
+            <td><img src="/static/items/223.png" /></td>
+            <td>Pyromaniac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>224</td>
+            <td><img src="/static/items/224.png" /></td>
+            <td>Cricket&#039;s Body</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>225</td>
+            <td><img src="/static/items/225.png" /></td>
+            <td>Gimpy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>226</td>
+            <td><img src="/static/items/226.png" /></td>
+            <td>Black Lotus</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>227</td>
+            <td><img src="/static/items/227.png" /></td>
+            <td>Piggy Bank</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>228</td>
+            <td><img src="/static/items/228.png" /></td>
+            <td>Mom&#039;s Perfume</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>229</td>
+            <td><img src="/static/items/229.png" /></td>
+            <td>Monstro&#039;s Lung</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>230</td>
+            <td><img src="/static/items/230.png" /></td>
+            <td>Abaddon</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>231</td>
+            <td><img src="/static/items/231.png" /></td>
+            <td>Ball of Tar</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>232</td>
+            <td><img src="/static/items/232.png" /></td>
+            <td>Stop Watch</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>233</td>
+            <td><img src="/static/items/233.png" /></td>
+            <td>Tiny Planet</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>234</td>
+            <td><img src="/static/items/234.png" /></td>
+            <td>Infestation 2</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>236</td>
+            <td><img src="/static/items/236.png" /></td>
+            <td>E. Coli</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>237</td>
+            <td><img src="/static/items/237.png" /></td>
+            <td>Death&#039;s Touch</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>238</td>
+            <td><img src="/static/items/238.png" /></td>
+            <td>Key Piece #1</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>239</td>
+            <td><img src="/static/items/239.png" /></td>
+            <td>Key Piece #2</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>240</td>
+            <td><img src="/static/items/240.png" /></td>
+            <td>Experimental Treatment</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>241</td>
+            <td><img src="/static/items/241.png" /></td>
+            <td>Contract From Below</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>242</td>
+            <td><img src="/static/items/242.png" /></td>
+            <td>Infamy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>243</td>
+            <td><img src="/static/items/243.png" /></td>
+            <td>Trinity Shield</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>244</td>
+            <td><img src="/static/items/244.png" /></td>
+            <td>Tech.5</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>245</td>
+            <td><img src="/static/items/245.png" /></td>
+            <td>20/20</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>246</td>
+            <td><img src="/static/items/246.png" /></td>
+            <td>Blue Map</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>247</td>
+            <td><img src="/static/items/247.png" /></td>
+            <td>BFFS!</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>248</td>
+            <td><img src="/static/items/248.png" /></td>
+            <td>Hive Mind</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>249</td>
+            <td><img src="/static/items/249.png" /></td>
+            <td>There&#039;s Options</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>250</td>
+            <td><img src="/static/items/250.png" /></td>
+            <td>Bogo Bombs</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>251</td>
+            <td><img src="/static/items/251.png" /></td>
+            <td>Starter Deck</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>252</td>
+            <td><img src="/static/items/252.png" /></td>
+            <td>Little Baggy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>253</td>
+            <td><img src="/static/items/253.png" /></td>
+            <td>Magic Scab</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>254</td>
+            <td><img src="/static/items/254.png" /></td>
+            <td>Blood Clot</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>255</td>
+            <td><img src="/static/items/255.png" /></td>
+            <td>Screw</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>256</td>
+            <td><img src="/static/items/256.png" /></td>
+            <td>Hot Bombs</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>257</td>
+            <td><img src="/static/items/257.png" /></td>
+            <td>Fire Mind</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>258</td>
+            <td><img src="/static/items/258.png" /></td>
+            <td>Missing No.</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>259</td>
+            <td><img src="/static/items/259.png" /></td>
+            <td>Dark Matter</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>260</td>
+            <td><img src="/static/items/260.png" /></td>
+            <td>Black Candle</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>261</td>
+            <td><img src="/static/items/261.png" /></td>
+            <td>Proptosis</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>262</td>
+            <td><img src="/static/items/262.png" /></td>
+            <td>Missing Page 2</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>264</td>
+            <td><img src="/static/items/264.png" /></td>
+            <td>Smart Fly</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>265</td>
+            <td><img src="/static/items/265.png" /></td>
+            <td>Dry Baby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>266</td>
+            <td><img src="/static/items/266.png" /></td>
+            <td>Juicy Sack</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>267</td>
+            <td><img src="/static/items/267.png" /></td>
+            <td>Robo-Baby 2.0</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>268</td>
+            <td><img src="/static/items/268.png" /></td>
+            <td>Rotten Baby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>269</td>
+            <td><img src="/static/items/269.png" /></td>
+            <td>Headless Baby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>270</td>
+            <td><img src="/static/items/270.png" /></td>
+            <td>Leech</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>271</td>
+            <td><img src="/static/items/271.png" /></td>
+            <td>Mystery Sack</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>272</td>
+            <td><img src="/static/items/272.png" /></td>
+            <td>BBF</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>273</td>
+            <td><img src="/static/items/273.png" /></td>
+            <td>Bob&#039;s Brain</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>274</td>
+            <td><img src="/static/items/274.png" /></td>
+            <td>Best Bud</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>275</td>
+            <td><img src="/static/items/275.png" /></td>
+            <td>Lil&#039; Brimstone</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>276</td>
+            <td><img src="/static/items/276.png" /></td>
+            <td>Isaac&#039;s Heart</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>277</td>
+            <td><img src="/static/items/277.png" /></td>
+            <td>Lil&#039; Haunt</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>278</td>
+            <td><img src="/static/items/278.png" /></td>
+            <td>Dark Bum</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>279</td>
+            <td><img src="/static/items/279.png" /></td>
+            <td>Big Fan</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>280</td>
+            <td><img src="/static/items/280.png" /></td>
+            <td>Sissy Long Legs</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>281</td>
+            <td><img src="/static/items/281.png" /></td>
+            <td>Punching Bag</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>282</td>
+            <td><img src="/static/items/282.png" /></td>
+            <td>How To Jump</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>283</td>
+            <td><img src="/static/items/283.png" /></td>
+            <td>D100</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>284</td>
+            <td><img src="/static/items/284.png" /></td>
+            <td>D4</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>285</td>
+            <td><img src="/static/items/285.png" /></td>
+            <td>D10</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>286</td>
+            <td><img src="/static/items/286.png" /></td>
+            <td>Blank Card</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>287</td>
+            <td><img src="/static/items/287.png" /></td>
+            <td>Book of Secrets</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>288</td>
+            <td><img src="/static/items/288.png" /></td>
+            <td>Box of Spiders</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>289</td>
+            <td><img src="/static/items/289.png" /></td>
+            <td>Red Candle</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>290</td>
+            <td><img src="/static/items/290.png" /></td>
+            <td>The Jar</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>291</td>
+            <td><img src="/static/items/291.png" /></td>
+            <td>FLUSH!</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>292</td>
+            <td><img src="/static/items/292.png" /></td>
+            <td>The Satanic Bible</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>293</td>
+            <td><img src="/static/items/293.png" /></td>
+            <td>Head of Krampus</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>294</td>
+            <td><img src="/static/items/294.png" /></td>
+            <td>Butter Bean</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>295</td>
+            <td><img src="/static/items/295.png" /></td>
+            <td>Magic Fingers</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>296</td>
+            <td><img src="/static/items/296.png" /></td>
+            <td>Converter</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>297</td>
+            <td><img src="/static/items/297.png" /></td>
+            <td>Pandora&#039;s Box</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>298</td>
+            <td><img src="/static/items/298.png" /></td>
+            <td>Unicorn Stump</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>299</td>
+            <td><img src="/static/items/299.png" /></td>
+            <td>Taurus</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>300</td>
+            <td><img src="/static/items/300.png" /></td>
+            <td>Aries</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>301</td>
+            <td><img src="/static/items/301.png" /></td>
+            <td>Cancer</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>302</td>
+            <td><img src="/static/items/302.png" /></td>
+            <td>Leo</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>303</td>
+            <td><img src="/static/items/303.png" /></td>
+            <td>Virgo</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>304</td>
+            <td><img src="/static/items/304.png" /></td>
+            <td>Libra</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>305</td>
+            <td><img src="/static/items/305.png" /></td>
+            <td>Scorpio</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>306</td>
+            <td><img src="/static/items/306.png" /></td>
+            <td>Sagittarius</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>307</td>
+            <td><img src="/static/items/307.png" /></td>
+            <td>Capricorn</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>308</td>
+            <td><img src="/static/items/308.png" /></td>
+            <td>Aquarius</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>309</td>
+            <td><img src="/static/items/309.png" /></td>
+            <td>Pisces</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>310</td>
+            <td><img src="/static/items/310.png" /></td>
+            <td>Eve&#039;s Mascara</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>311</td>
+            <td><img src="/static/items/311.png" /></td>
+            <td>Judas&#039; Shadow</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>312</td>
+            <td><img src="/static/items/312.png" /></td>
+            <td>Maggy&#039;s Bow</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>313</td>
+            <td><img src="/static/items/313.png" /></td>
+            <td>Holy Mantle</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>314</td>
+            <td><img src="/static/items/314.png" /></td>
+            <td>Thunder Thighs</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>315</td>
+            <td><img src="/static/items/315.png" /></td>
+            <td>Strange Attractor</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>316</td>
+            <td><img src="/static/items/316.png" /></td>
+            <td>Cursed Eye</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>317</td>
+            <td><img src="/static/items/317.png" /></td>
+            <td>Mysterious Liquid</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>318</td>
+            <td><img src="/static/items/318.png" /></td>
+            <td>Gemini</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>319</td>
+            <td><img src="/static/items/319.png" /></td>
+            <td>Cain&#039;s Other Eye</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>320</td>
+            <td><img src="/static/items/320.png" /></td>
+            <td>???&#039;s Only Friend</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>321</td>
+            <td><img src="/static/items/321.png" /></td>
+            <td>Samson&#039;s Chains</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>322</td>
+            <td><img src="/static/items/322.png" /></td>
+            <td>Mongo Baby</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>323</td>
+            <td><img src="/static/items/323.png" /></td>
+            <td>Isaac&#039;s Tears</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>324</td>
+            <td><img src="/static/items/324.png" /></td>
+            <td>Undefined</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>325</td>
+            <td><img src="/static/items/325.png" /></td>
+            <td>Scissors</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>326</td>
+            <td><img src="/static/items/326.png" /></td>
+            <td>Breath of Life</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>327</td>
+            <td><img src="/static/items/327.png" /></td>
+            <td>The Polaroid</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>328</td>
+            <td><img src="/static/items/328.png" /></td>
+            <td>The Negative</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>329</td>
+            <td><img src="/static/items/329.png" /></td>
+            <td>The Ludovico Technique</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>330</td>
+            <td><img src="/static/items/330.png" /></td>
+            <td>Soy Milk</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>331</td>
+            <td><img src="/static/items/331.png" /></td>
+            <td>GodHead</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>332</td>
+            <td><img src="/static/items/332.png" /></td>
+            <td>Lazarus&#039; Rags</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>333</td>
+            <td><img src="/static/items/333.png" /></td>
+            <td>The Mind</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>334</td>
+            <td><img src="/static/items/334.png" /></td>
+            <td>The Body</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-missing">
+            <td>335</td>
+            <td><img src="/static/items/335.png" /></td>
+            <td>The Soul</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>336</td>
+            <td><img src="/static/items/336.png" /></td>
+            <td>Dead Onion</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>337</td>
+            <td><img src="/static/items/337.png" /></td>
+            <td>Broken Watch</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>338</td>
+            <td><img src="/static/items/338.png" /></td>
+            <td>Boomerang</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>339</td>
+            <td><img src="/static/items/339.png" /></td>
+            <td>Safety Pin</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>340</td>
+            <td><img src="/static/items/340.png" /></td>
+            <td>Caffeine Pill</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>341</td>
+            <td><img src="/static/items/341.png" /></td>
+            <td>Torn Photo</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>342</td>
+            <td><img src="/static/items/342.png" /></td>
+            <td>Blue Cap</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>343</td>
+            <td><img src="/static/items/343.png" /></td>
+            <td>Latch Key</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>344</td>
+            <td><img src="/static/items/344.png" /></td>
+            <td>Match Book</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>345</td>
+            <td><img src="/static/items/345.png" /></td>
+            <td>Synthoil</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="item item-acquired">
+            <td>346</td>
+            <td><img src="/static/items/346.png" /></td>
+            <td>A Snack</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+    </table>
+
+<script>
+    $(document).ready(function() {
+        $('#items-filter-all').on('click', function() {
+            $('.item').show();
+        });
+        $('#items-filter-acquired').on('click', function() {
+            $('.item-acquired').show();
+            $('.item-missing').hide();
+        });
+        $('#items-filter-missing').on('click', function() {
+            $('.item-acquired').hide();
+            $('.item-missing').show();
+        });
+    });
+
+</script>
+    <h2 id="Achievements">Achievements</h2>
+
+<div class="btn-group" role="group">
+    <button id="achievements-filter-all" type="button" class="btn btn-default btn-sm">All</button>
+    <button id="achievements-filter-acquired" type="button" class="btn btn-default btn-sm">Acquired</button>
+    <button id="achievements-filter-missing" type="button" class="btn btn-default btn-sm">Missing</button>
+</div>
+
+<table class="table table-hover table-condensed">
+    <col width="5%" />
+    <col width="30%" />
+    <col width="60%" />
+    <col width="5%" />
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Hint</th>
+        <th>Acquired</th>
+    </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>1</td>
+            <td>Magdalene</td>
+            <td>Have 7 or more max red hearts at one time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>2</td>
+            <td>Cain</td>
+            <td>Hold 55 pennies at one time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>3</td>
+            <td>Judas</td>
+            <td>Kill Satan for the 1st time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>4</td>
+            <td>The Womb</td>
+            <td>Beat Mom for the 1st time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>5</td>
+            <td>The Harbingers</td>
+            <td>Beat Mom for the 1st time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>6</td>
+            <td>A Cube of Meat</td>
+            <td>Beat Mom for the 1st time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>7</td>
+            <td>Book Of Revelations</td>
+            <td>Beat a horseman for the 1st time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>8</td>
+            <td>Transcendence</td>
+            <td>Beat Mom&#039;s Heart 3 times (A Noose = Transcendence)</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>9</td>
+            <td>The Nail</td>
+            <td>Beat Boss Rush with Demon Isaac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>10</td>
+            <td>A Quarter</td>
+            <td>Beat Mom&#039;s Heart 8 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>11</td>
+            <td>Dr. Fetus</td>
+            <td>Beat Mom&#039;s Heart 9 times (A Fetus in a Jar = Dr. Fetus)</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>12</td>
+            <td>A Small Rock</td>
+            <td>Destroy 100 tinted rocks</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>13</td>
+            <td>Monstro&#039;s Tooth</td>
+            <td>Beat Basement II for the 1st time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>14</td>
+            <td>Lil Chubby</td>
+            <td>Beat Caves II for the 1st time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>15</td>
+            <td>Loki&#039;s Horns</td>
+            <td>Beat Lokii for the 1st time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>16</td>
+            <td>Something From The Future!</td>
+            <td>Beat the basement 40 times (Steven)</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>17</td>
+            <td>Something Cute</td>
+            <td>Beat the caves 30 times (C.H.A.D.)</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>18</td>
+            <td>Something Sticky</td>
+            <td>Beat the depths 20 times (Gish)</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>19</td>
+            <td>Super Bandage</td>
+            <td>Make a super bandage girl (A Bandage = Super Bandage)</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>20</td>
+            <td>Relic</td>
+            <td>Kill Isaac with Maggy (A Cross = Relic)</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>21</td>
+            <td>A Bag of Pennies</td>
+            <td>Kill Isaac with Cain</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>22</td>
+            <td>The Book Of Sin</td>
+            <td>Kill all 7 sins</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>23</td>
+            <td>Little Gish</td>
+            <td>Kill Gish</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>24</td>
+            <td>Little Steven</td>
+            <td>Kill Steven</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>25</td>
+            <td>Little C.H.A.D.</td>
+            <td>Kill C.H.A.D.</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>26</td>
+            <td>A Gamekid</td>
+            <td>Visit 10 arcades</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>27</td>
+            <td>A Halo</td>
+            <td>Kill Mom using the bible</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>28</td>
+            <td>Mr. Mega!</td>
+            <td>Destroy 10 tinted rocks</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>29</td>
+            <td>The D6</td>
+            <td>Kill Isaac with ???</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>30</td>
+            <td>The Scissors</td>
+            <td>Die 100 times</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>31</td>
+            <td>The Parasite</td>
+            <td>Collect 2 of Bob&#039;s Rotten Head, Dead Cat, Max&#039;s Head, Tammy&#039;s Head</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>32</td>
+            <td>???</td>
+            <td>Beat Mom&#039;s Heart 10 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>33</td>
+            <td>Everything Is Terrible!!!</td>
+            <td>Beat Mom&#039;s Heart 5 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>34</td>
+            <td>It Lives</td>
+            <td>Beat Mom&#039;s Heart 11 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>35</td>
+            <td>Mom&#039;s Contact</td>
+            <td>Become mom (collect 3 mom items in one playthrough)</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>36</td>
+            <td>The Necronomicon</td>
+            <td>Use the Death Card 4 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>37</td>
+            <td>Basement Boy</td>
+            <td>Beat the Basement/Cellar without taking damage</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>38</td>
+            <td>Spelunker Boy</td>
+            <td>Beat the Caves/Catacombs without taking damage</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>39</td>
+            <td>Dark Boy</td>
+            <td>Beat the Depths/Necropolis without taking damage</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>40</td>
+            <td>Mamas Boy</td>
+            <td>Beat the Womb/Utero without taking damage</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>41</td>
+            <td>Golden God!</td>
+            <td>Beat ??? and Lamb</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>42</td>
+            <td>Eve</td>
+            <td>Don&#039;t pick up any hearts for 2 levels in a row</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>43</td>
+            <td>Mom&#039;s Knife</td>
+            <td>Kill Satan with Isaac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>44</td>
+            <td>The Razor</td>
+            <td>Kill Satan with Eve</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>45</td>
+            <td>Guardian Angel</td>
+            <td>Kill Satan with Maggy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>46</td>
+            <td>A Bag of Bombs</td>
+            <td>Kill Satan with Cain</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>47</td>
+            <td>A Demon Baby!</td>
+            <td>Beat Dark Room with Demon Isaac</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>48</td>
+            <td>A Forget Me Now</td>
+            <td>Kill Satan with ???</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>49</td>
+            <td>The D20</td>
+            <td>Beat The Chest with Isaac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>50</td>
+            <td>Celtic Cross</td>
+            <td>Beat The Chest with Maggy (Crucifix = Celtic Cross)</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>51</td>
+            <td>Abel</td>
+            <td>Beat Dark Room with Cain</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>52</td>
+            <td>Curved Horn</td>
+            <td>Beat Dark Room with Judas</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>53</td>
+            <td>Sacrificial Dagger</td>
+            <td>Beat Chest with Eve</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>54</td>
+            <td>Blood Lust</td>
+            <td>Kill Isaac with Samson</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>55</td>
+            <td>Blood Penny</td>
+            <td>Beat Chest with Samson</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>56</td>
+            <td>Blood Rights</td>
+            <td>Kill Satan with Samson</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>57</td>
+            <td>The Polaroid</td>
+            <td>Beat the cathedral 5 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>58</td>
+            <td>Dad&#039;s Key</td>
+            <td>Collect a golden key</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>59</td>
+            <td>The Blue Candle</td>
+            <td>Donate 900 pennies to the store (blue candle)</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>60</td>
+            <td>Burnt Penny</td>
+            <td>Beat Challenge #13</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>61</td>
+            <td>Lucky Toe!</td>
+            <td>Blow up 20 shop keepers</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>62</td>
+            <td>Epic Fetus</td>
+            <td>Beat Challenge #19</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>63</td>
+            <td>SMB Super Fan</td>
+            <td>Beat Challenge #14</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>64</td>
+            <td>Counterfeit coin</td>
+            <td>Play the shell game 100 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>65</td>
+            <td>Guppy&#039;s Hairball</td>
+            <td>Become Guppy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>66</td>
+            <td>Conquest</td>
+            <td>Take 10 items from Angel rooms</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>67</td>
+            <td>Samson</td>
+            <td>Beat 2 levels in a row without taking damage</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>68</td>
+            <td>Something Icky!</td>
+            <td>Beat Cathedral 10 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>69</td>
+            <td>Platinum God</td>
+            <td>Collect all items in the game and unlock all secrets and endings minus &quot;the soul&quot; and its 5 unlockable items</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>70</td>
+            <td>Isaac&#039;s Head</td>
+            <td>Beat Boss Rush with Isaac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>71</td>
+            <td>Maggy&#039;s Faith</td>
+            <td>Beat Dark Room with Maggy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>72</td>
+            <td>Judas&#039; Tongue</td>
+            <td>Kill Satan with Judas</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>73</td>
+            <td>???&#039;s Soul</td>
+            <td>Beat Dark Room with ???</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>74</td>
+            <td>Samson&#039;s Lock</td>
+            <td>Beat Dark Room with Samson</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>75</td>
+            <td>Cain&#039;s Eye</td>
+            <td>Beat Chest with Cain</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>76</td>
+            <td>Eve&#039;s Bird Foot</td>
+            <td>Kill Isaac with Eve</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>77</td>
+            <td>The Left Hand</td>
+            <td>Beat Chest with Judas</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>78</td>
+            <td>The Negative</td>
+            <td>Beat Sheol 5 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>79</td>
+            <td>Azazel</td>
+            <td>Make 3 deals with the devil in one run</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>80</td>
+            <td>Lazarus</td>
+            <td>Have 4 or more soul hearts at one time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>81</td>
+            <td>Eden</td>
+            <td>Beat the womb for the 1st time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>82</td>
+            <td>The Lost</td>
+            <td>Finish the game&#039;s final secret</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>83</td>
+            <td>Dead Boy</td>
+            <td>Beat the Chest or Dark Room without taking damage</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>84</td>
+            <td>Real Platinum God</td>
+            <td>100% of the game (unlock every item)</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>85</td>
+            <td>Lucky Rock</td>
+            <td>Destroy 100 rocks</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>86</td>
+            <td>The Cellar</td>
+            <td>Beat all possible bosses in the basement</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>87</td>
+            <td>The Catacombs</td>
+            <td>Beat all possible bosses in the caves</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>88</td>
+            <td>Necropolis</td>
+            <td>Beat all possible bosses in the depths</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>89</td>
+            <td>Rune of Hagalaz</td>
+            <td>Beat Challenge #1</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>90</td>
+            <td>Rune of Jera</td>
+            <td>Beat Challenge #2</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>91</td>
+            <td>Rune of Ehwaz</td>
+            <td>Beat Challenge #3</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>92</td>
+            <td>Rune of Dagaz</td>
+            <td>Beat Challenge #4</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>93</td>
+            <td>Rune of Ansuz</td>
+            <td>Beat Challenge #5</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>94</td>
+            <td>Rune of Perthro</td>
+            <td>Beat Challenge #6</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>95</td>
+            <td>Rune of Berkano</td>
+            <td>Beat Challenge #7</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>96</td>
+            <td>Rune of Algiz</td>
+            <td>Beat Challenge #8</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>97</td>
+            <td>Chaos Card</td>
+            <td>Beat Challenge #9</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>98</td>
+            <td>Credit Card</td>
+            <td>Beat Challenge #10</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>99</td>
+            <td>Rules Card</td>
+            <td>Beat Challenge #11</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>100</td>
+            <td>Card Against Humanity</td>
+            <td>Beat Challenge #12</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>101</td>
+            <td>Swallowed Penny</td>
+            <td>Beat Challenge #15</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>102</td>
+            <td>Robo Baby 2.0</td>
+            <td>Beat Challenge #16</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>103</td>
+            <td>Death&#039;s Touch</td>
+            <td>Beat Challenge #17</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>104</td>
+            <td>Tech.5</td>
+            <td>Beat Challenge #18</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>105</td>
+            <td>Missing No.</td>
+            <td>Beat Challenge #20</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>106</td>
+            <td>Isaac&#039;s Tears</td>
+            <td>Kill Isaac with Isaac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>107</td>
+            <td>Guillotine</td>
+            <td>Kill Isaac with Judas</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>108</td>
+            <td>Judas&#039; Shadow</td>
+            <td>Beat Boss Rush with Judas</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>109</td>
+            <td>Maggy&#039;s Bow</td>
+            <td>Beat Boss Rush with Maggy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>110</td>
+            <td>Cain&#039;s Other Eye</td>
+            <td>Beat Boss Rush with Cain</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>111</td>
+            <td>Black Lipstick</td>
+            <td>Beat Dark Room with Eve</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>112</td>
+            <td>Eve&#039;s Mascara</td>
+            <td>Beat Boss Rush with Eve</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>113</td>
+            <td>Fate</td>
+            <td>Beat Chest with ???</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>114</td>
+            <td>???&#039;s Only Friend</td>
+            <td>Beat Boss Rush with ???</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>115</td>
+            <td>Samson&#039;s Chains</td>
+            <td>Beat Boss Rush with Samson</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>116</td>
+            <td>Lazarus&#039; Rags</td>
+            <td>Kill Isaac with Lazarus</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>117</td>
+            <td>Broken Ankh</td>
+            <td>Kill Satan with Lazarus</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>118</td>
+            <td>Store Credit</td>
+            <td>Beat Chest with Lazarus</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>119</td>
+            <td>Pandora&#039;s Box</td>
+            <td>Beat Dark Room with Lazarus</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>120</td>
+            <td>Suicide King</td>
+            <td>Beat Boss Rush with Lazarus</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>121</td>
+            <td>Blank Card</td>
+            <td>Kill Isaac with Eden</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>122</td>
+            <td>Book of Secrets</td>
+            <td>Kill Satan with Eden</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>123</td>
+            <td>Mysterious Paper</td>
+            <td>Beat Chest with Eden</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>124</td>
+            <td>Mystery Sack</td>
+            <td>Beat Dark Room with Eden</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>125</td>
+            <td>Undefined</td>
+            <td>Beat Boss Rush with Eden</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>126</td>
+            <td>Satanic Bible</td>
+            <td>Kill Isaac with Demon Isaac</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>127</td>
+            <td>Demon&#039;s Tail</td>
+            <td>Kill Satan with Demon Isaac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>128</td>
+            <td>Abaddon</td>
+            <td>Beat Chest with Demon Isaac</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>129</td>
+            <td>Isaac&#039;s Heart</td>
+            <td>Kill Isaac with The Lost</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>130</td>
+            <td>The Mind</td>
+            <td>Kill Satan with The Lost</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>131</td>
+            <td>The Body</td>
+            <td>Beat Chest with The Lost</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>132</td>
+            <td>The Soul</td>
+            <td>Beat Dark Room with The Lost</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>133</td>
+            <td>A D100</td>
+            <td>Beat Boss Rush with The Lost</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>134</td>
+            <td>Blue Map</td>
+            <td>Donate 10 pennies to the shop</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>135</td>
+            <td>There&#039;s Options</td>
+            <td>Donate 50 pennies to the shop</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>136</td>
+            <td>Black Candle</td>
+            <td>Donate 150 pennies to the shop</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>137</td>
+            <td>Red Candle</td>
+            <td>Donate 400 pennies to the shop</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>138</td>
+            <td>Stop Watch</td>
+            <td>Donate 999 pennies to the shop</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>139</td>
+            <td>Wire Coat Hanger</td>
+            <td>Beat Mom&#039;s Heart 4 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>140</td>
+            <td>Ipecac</td>
+            <td>Beat Mom&#039;s Heart 6 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>141</td>
+            <td>Experimental Treatment</td>
+            <td>Beat Mom&#039;s Heart 7 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>142</td>
+            <td>Krampus</td>
+            <td>Take 20 items from devil rooms</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>143</td>
+            <td>Head of Krampus</td>
+            <td>Kill Krampus</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>144</td>
+            <td>Super Meat Boy</td>
+            <td>Make a super meat boy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>145</td>
+            <td>Butter Bean</td>
+            <td>Destroy 100 poops</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>146</td>
+            <td>Little Baggy</td>
+            <td>Collect 2 of either Roid Rage, The Virus, Growth Hormones, Experimental Treatment or Speed Ball</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>147</td>
+            <td>Blood Bag</td>
+            <td>Use the blood donation machine 30 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>148</td>
+            <td>D4</td>
+            <td>Blow up 30 arcade machines</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>149</td>
+            <td>The Lost Poster</td>
+            <td>Beat Dark Room with Isaac</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>150</td>
+            <td>Rubber Cement</td>
+            <td>Beat Mom&#039;s Heart 2 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>151</td>
+            <td>Store Upgrade 1</td>
+            <td>Donate 20 pennies to the shop</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>152</td>
+            <td>Store Upgrade 2</td>
+            <td>Donate 100 pennies to the shop</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>153</td>
+            <td>Store Upgrade 3</td>
+            <td>Donate 200 pennies to the shop</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>154</td>
+            <td>Store Upgrade 4</td>
+            <td>Donate 600 pennies to the shop</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>155</td>
+            <td>Angels</td>
+            <td>Beat Chest or Dark Room</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>156</td>
+            <td>Godhead</td>
+            <td>Beat Satan, Isaac, Mom&#039;s Heart, ???, Lamb, and Boss Rush on hard mode with The Lost</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>157</td>
+            <td>Darkness Falls</td>
+            <td>Beat Mom&#039;s Heart 11 times</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>158</td>
+            <td>The Tank</td>
+            <td>Unlock Magdalene</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>159</td>
+            <td>Solar System</td>
+            <td>Finish the game with a full set of orbitals</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>160</td>
+            <td>Suicide King</td>
+            <td>Unlock It Lives</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>161</td>
+            <td>Cat Got Your Tongue</td>
+            <td>Become Guppy</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>162</td>
+            <td>Demo Man</td>
+            <td>Unlock Dr. Fetus</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>163</td>
+            <td>Cursed!</td>
+            <td>Unlock Magdalene</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>164</td>
+            <td>Glass Cannon</td>
+            <td>Unlock Epic Fetus and Loki&#039;s Horns</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>165</td>
+            <td>The Family Man</td>
+            <td>Unlock Dad&#039;s Key</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>166</td>
+            <td>The Purist</td>
+            <td>Kill Mom for the first time</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>167</td>
+            <td>Lost Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with Isaac</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>168</td>
+            <td>Cute Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with Maggy</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>169</td>
+            <td>Crow Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with Eve</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>170</td>
+            <td>Shadow Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with Judas</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>171</td>
+            <td>Glass Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with Cain</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>172</td>
+            <td>Wrapped Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with Lazarus</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>173</td>
+            <td>Begotten Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with Azazel</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>174</td>
+            <td>Dead Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with ???</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>175</td>
+            <td>-0- Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with The Lost</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>176</td>
+            <td>Glitch Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with Eden</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-missing">
+            <td>177</td>
+            <td>Fighting Baby</td>
+            <td>Beat Mom&#039;s Heart on hard mode with Samson</td>
+            <td>
+                            </td>
+        </tr>
+                    <tr class="achievement achievement-acquired">
+            <td>178</td>
+            <td>Lord Of The Flies</td>
+            <td>Become Lord of the Flies</td>
+            <td>
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                            </td>
+        </tr>
+    </table>
+
+<script>
+    $(document).ready(function() {
+        $('#achievements-filter-all').on('click', function() {
+            $('.achievement').show();
+        });
+        $('#achievements-filter-acquired').on('click', function() {
+            $('.achievement-acquired').show();
+            $('.achievement-missing').hide();
+        });
+        $('#achievements-filter-missing').on('click', function() {
+            $('.achievement-acquired').hide();
+            $('.achievement-missing').show();
+        });
+    });
+</script>
+        </section>
+        <footer>
+            <p>Produced by Bezdomni</p>
+        </footer>
+    </div>
+
+        </body>
+</html>

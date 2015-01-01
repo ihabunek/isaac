@@ -17,20 +17,15 @@ $app['debug'] = true;
 
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
+$app->register(new Silex\Provider\HttpCacheServiceProvider(), [
+    'http_cache.cache_dir' => __DIR__ . '/../cache/',
+]);
 
 // -- Templating ---------------------------------------------------------------
 
 $app->register(new Silex\Provider\TwigServiceProvider(), [
     'twig.path' => __DIR__ . '/../templates'
 ]);
-
-$app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
-    $twig->addFilter(new Twig_SimpleFilter('markdown', function ($text) {
-        $parsedown = new Parsedown();
-        return $parsedown->text($text);
-    }, ['is_safe' => ['html']]));
-    return $twig;
-}));
 
 $app->before(function (Request $request) use ($app) {
     $app['twig']->addGlobal('current_path', $request->getPathInfo());
@@ -67,4 +62,8 @@ if (extension_loaded('newrelic')) {
 
 // -- Go! ----------------------------------------------------------------------
 
-$app->run();
+Request::setTrustedProxies(['127.0.0.1']);
+
+$app['http_cache']->run();
+
+// $app->run();

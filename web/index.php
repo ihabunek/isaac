@@ -57,13 +57,13 @@ $app->get('/show/{id}', 'controller:showAction')
 
 // -- New Relic ----------------------------------------------------------------
 
-// if (extension_loaded('newrelic')) {
-//     newrelic_set_appname("HUB-3");
+if (extension_loaded('newrelic')) {
+    newrelic_set_appname("Isaac");
 
-//     $app->before(function (Request $request) use ($app) {
-//         newrelic_name_transaction($request->getPathInfo());
-//     });
-// }
+    $app->before(function (Request $request) use ($app) {
+        newrelic_name_transaction($request->getPathInfo());
+    });
+}
 
 // -- Go! ----------------------------------------------------------------------
 

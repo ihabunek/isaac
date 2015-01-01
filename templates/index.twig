@@ -4,6 +4,14 @@
 
     <h1>Binding of Isaac: Rebirth Savegame Parser</h1>
 
+    <p>Upload your save game and I'll tell you some stats.</p>
+
+    <div class="alert alert-info" role="alert">
+        Works only with the latest savegame format, game version 1.04. Your
+        savegame should be exactly 4K large and start with the string
+        "ISAACNGSAVE06R".
+    </div>
+
     <form action="/upload" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="savegame">Save game file</label>

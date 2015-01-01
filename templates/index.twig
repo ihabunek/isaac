@@ -6,11 +6,24 @@
 
     <p>Upload your save game and I'll tell you some stats.</p>
 
+    <p>This is a work in progress. Most stats found by playing the game and
+    looking what's changed after each save. Report any problems by creating
+    an <a target="_blank" href="https://github.com/ihabunek/isaac/issues">issue on github.</a>
+    </p>
+
     <div class="alert alert-info" role="alert">
-        Works only with the latest savegame format, game version 1.04. Your
+        Tested with savegame format produced by BOIR version 1.04. Your
         savegame should be exactly 4K large and start with the string
         "ISAACNGSAVE06R".
     </div>
+
+    <p>Savegames locations: </p>
+    <ul>
+        <li>Windows: <code>c:\Program Files (x86)\Steam\userdata\********\250900\remote\</code></li>
+        <li>Linux: <code>~/.local/share/Steam/userdata/********/250900/remote/</code></li>
+    </ul>
+
+    <h3>Upload</h3>
 
     <form action="/upload" method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -20,5 +33,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
 
 {% endblock %}

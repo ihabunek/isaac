@@ -2,16 +2,15 @@
 
 {% block content %}
 
-<h1>Binding of Isaac: Rebirth</h1>
-<h2>Savegame parser</h2>
+    <h1>Binding of Isaac: Rebirth Savegame Parser</h1>
 
-<form action="/upload" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="savegame">Save game file</label>
-        <input type="file" name="savegame" id="savegame">
-        <p class="help-block">Upload your savegame (<code>persistentgamedata*.dat</code>).</p>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="savegame">Save game file</label>
+            <input type="file" name="savegame" id="savegame">
+            <p class="help-block">Upload your savegame (<code>persistentgamedata*.dat</code>).</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 {% endblock %}

@@ -56,7 +56,8 @@ if (extension_loaded('newrelic')) {
     newrelic_set_appname("Isaac");
 
     $app->before(function (Request $request) use ($app) {
-        newrelic_name_transaction($request->getPathInfo());
+        $route = $request->attributes->get('_route');
+        newrelic_name_transaction($route);
     });
 }
 

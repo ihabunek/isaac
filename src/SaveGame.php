@@ -6,10 +6,10 @@ class SaveGame
 {
     // Offsets for ranges
     const ACHIEVEMENTS = 33;
+    const PROGRESS = 327;
     const ITEMS = 676;
     const MINI_BOSSES = 1035;
     const BOSSES = 1054;
-    const PROGRESS = 327;
 
     private $offsets = [
         227 => 'mom_kills',

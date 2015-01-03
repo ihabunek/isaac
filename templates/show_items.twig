@@ -19,9 +19,9 @@
     </tr>
     {% for itemID, bool in save.items %}
         {% set acquired = save.items[itemID] %}
-        <tr class="item {% if acquired %}item-acquired{% else %}item-missing{% endif %}">
+        <tr class="item-all {% if acquired %}item-acquired{% else %}item-missing{% endif %}">
             <td>{{ itemID }}</td>
-            <td><img src="/static/items/{{ "%03d"|format(itemID) }}.png" /></td>
+            <td><div class="item item-{{itemID}}"></div></td>
             <td>{{ catalogue.items[itemID] }}</td>
             <td>
                 {% if acquired %}
@@ -35,7 +35,7 @@
 <script>
     $(document).ready(function() {
         $('#items-filter-all').on('click', function() {
-            $('.item').show();
+            $('.item-all').show();
         });
         $('#items-filter-acquired').on('click', function() {
             $('.item-acquired').show();

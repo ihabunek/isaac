@@ -2,14 +2,15 @@
 
 namespace Bezdomni\IsaacRebirth;
 
+use SplFileInfo;
+
 use Silex\Application;
 
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
  * Processes the barcode request and forms a response.
@@ -18,7 +19,25 @@ class Controller
 {
     public function indexAction(Application $app)
     {
-        return $app['twig']->render("index.twig");
+        $dirPath = __DIR__ . '/../var/saves';
+
+        // Find recent uploads
+        $finder = new Finder();
+        $finder->files()
+            ->in($dirPath)
+            ->date('since yesterday');
+
+        $recents = [];
+        foreach ($finder as $file) {
+            $recents[] = [
+                "time" => $file->getCTime(),
+                "hash" => $file->getFilename(),
+            ];
+        }
+
+        return $app['twig']->render("index.twig", [
+            "recents" => $recents
+        ]);
     }
 
     public function uploadAction(Application $app, Request $request)
@@ -58,16 +77,26 @@ class Controller
 
     public function showAction(Application $app, Request $request, $id)
     {
-        $data = file_get_contents(__DIR__ . '/../var/saves/' . $id);
-        if ($data === false) {
+        $dirPath = __DIR__ . '/../var/saves';
+        $filePath = "$dirPath/$id";
+
+        $fileInfo = new SplFileInfo($filePath);
+        if (!$fileInfo->isFile()) {
             throw new \Exception("Unable to load savegame data.");
         }
 
-        $save = new SaveGame($data);
+        $ctime = $fileInfo->getCTime();
+
+        $file = $fileInfo->openFile();
+        $size = $file->getSize();
+        $contents = $file->fread($size);
+
+        $save = new SaveGame($contents);
 
         $data = [
             "id" => $id,
             "save" => $save,
+            "ctime" => $ctime,
             "catalogue" => $save->catalogue()
         ];
 

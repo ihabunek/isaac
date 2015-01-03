@@ -2,16 +2,24 @@
 
 {% block content %}
 
-    <h1>Binding of Isaac: Rebirth Savegame Parser</h1>
-    <a href="/">&laquo; Go back</a>
     <h2>Savegame info</h2>
 
-    <h4>Jump to:</h4>
-    <a class="btn btn-primary btn-xs" href="#Progress">Progress</a>
-    <a class="btn btn-primary btn-xs" href="#Stats">Stats</a>
-    <a class="btn btn-primary btn-xs" href="#Bosses">Bosses</a>
-    <a class="btn btn-primary btn-xs" href="#Items">Items</a>
-    <a class="btn btn-primary btn-xs" href="#Achievements">Achievements</a>
+    <p>Hash: <em>{{ id }}</em></p>
+
+    <p>Uploaded: <em>{{ ctime|date }}</em></p>
+
+    <hr />
+
+    <p>
+        <strong>Jump to:</strong><br />
+        <a class="btn btn-primary btn-xs" href="#Progress">Progress</a>
+        <a class="btn btn-primary btn-xs" href="#Stats">Stats</a>
+        <a class="btn btn-primary btn-xs" href="#Bosses">Bosses</a>
+        <a class="btn btn-primary btn-xs" href="#Items">Items</a>
+        <a class="btn btn-primary btn-xs" href="#Achievements">Achievements</a>
+    </p>
+
+    <hr />
 
     {% include 'show_progress.twig' %}
     {% include 'show_stats.twig' %}

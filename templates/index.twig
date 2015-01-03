@@ -2,8 +2,6 @@
 
 {% block content %}
 
-    <h1>Binding of Isaac: Rebirth Savegame Parser</h1>
-
     <p>Upload your save game and I'll tell you some stats.</p>
 
     <p>This is a work in progress. Stats are found by playing the game and
@@ -20,14 +18,13 @@
         listed.
     </div>
 
+    <h3>Upload your save</h3>
 
-    <p>Savegames locations: </p>
+    <p>Savegame locations: </p>
     <ul>
         <li>Windows: <code>c:\Program Files (x86)\Steam\userdata\********\250900\remote\</code></li>
         <li>Linux: <code>~/.local/share/Steam/userdata/********/250900/remote/</code></li>
     </ul>
-
-    <h3>Upload</h3>
 
     <form action="/upload" method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -39,4 +36,27 @@
     </form>
 
 
+    <h3>Recent uploads</h3>
+
+    <table class="table table-compact table-hover">
+        <thead>
+            <tr>
+                <th>Hash</th>
+                <th>Uploaded</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recent in recents %}
+            <tr>
+                <td><a href="{{ path("show", { id: recent.hash }) }}">{{ recent.hash }}</a></td>
+                <td>{{ recent.time|date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Privacy policy</h3>
+
+    <p>All uploaded files are made public. However, no personal data is
+    collected or displayed anywhere on the web.</p>
 {% endblock %}

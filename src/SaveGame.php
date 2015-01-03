@@ -9,6 +9,7 @@ class SaveGame
     const ITEMS = 676;
     const MINI_BOSSES = 1035;
     const BOSSES = 1054;
+    const PROGRESS = 327;
 
     private $offsets = [
         227 => 'mom_kills',
@@ -116,6 +117,24 @@ class SaveGame
     {
         $catalogue = $this->catalogue->miniBosses();
         return $this->many($catalogue, self::MINI_BOSSES);
+    }
+
+    public function progress()
+    {
+        $characters = $this->catalogue->characters();
+        $progresses = $this->catalogue->progresses();
+
+        $offset = self::PROGRESS;
+        $return = [];
+        foreach ($progresses as $pid => $progress) {
+            foreach ($characters as $cid => $character) {
+                $value = $this->getLong($offset);
+                $return[$cid][$pid] = $value;
+                $offset += 4;
+            }
+        }
+
+        return $return;
     }
 
     public function many($catalogue, $startOffset)

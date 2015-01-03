@@ -1,0 +1,57 @@
+section, header, footer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header, footer {
+    margin-top: 20px;
+}
+
+footer {
+    border-top: 1px solid rgb(44, 62, 80);
+    margin-top: 30px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+h1, h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.table-stats {
+    max-width: 300px;
+}
+
+/* Progress table and icons
+---------------------------- */
+
+.prog-table th { text-align: center }
+.prog-table td { text-align: center; width: 14.29%}
+
+.prog {
+    width: 32px;
+    height: 32px;
+    background-image: url("/static/images/progress-200.png");
+    display: inline-block;
+}
+
+/* Normal mode */
+.prog-1-1 { background-position: -128px -32px } /* Heart */
+.prog-2-1 { background-position:  -64px -32px } /* Isaac */
+.prog-3-1 { background-position:  -96px -32px } /* Satan */
+.prog-4-1 { background-position: -160px -32px } /* Rush  */
+.prog-5-1 { background-position:    0px -32px } /* ???   */
+.prog-6-1 { background-position:  -32px -32px } /* Lamb  */
+
+/* Hard mode */
+.prog-1-2 { background-position: -128px 0px } /* Heart */
+.prog-2-2 { background-position:  -64px 0px } /* Isaac */
+.prog-3-2 { background-position:  -96px 0px } /* Satan */
+.prog-4-2 { background-position: -160px 0px } /* Rush  */
+.prog-5-2 { background-position:    0px 0px } /* ???   */
+.prog-6-2 { background-position:  -32px 0px } /* Lamb  */

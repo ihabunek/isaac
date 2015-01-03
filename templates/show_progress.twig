@@ -1,0 +1,28 @@
+<h2 id="Progress">Progress</h2>
+
+<p>Shows which end-bosses have been beaten with each playable character</p>
+
+<table class="table table-bordered prog-table">
+    <thead>
+        <tr>
+            <th></th>
+            {% for pid, progress in catalogue.progresses %}
+                <th>{{ progress }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for cid, progresses in save.progress %}
+            <tr>
+                <td><strong>{{ catalogue.character(cid) }}</strong></td>
+                {% for pid, progress in progresses %}
+                    <td {% if progress == 2 %} class="hardmode"{% endif %}>
+                    {% if progress > 0 %}
+                        <div class="prog prog-{{ pid }}-{{ progress }}"></div>
+                    {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

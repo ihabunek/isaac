@@ -65,6 +65,6 @@ if (extension_loaded('newrelic')) {
 
 Request::setTrustedProxies(['127.0.0.1']);
 
-$app['http_cache']->run();
+// $app['http_cache']->run();
 
-// $app->run();
+$app->run();

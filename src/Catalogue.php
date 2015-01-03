@@ -4,6 +4,29 @@ namespace Bezdomni\IsaacRebirth;
 
 class Catalogue
 {
+    private $characters = [
+        1 => "Isaac",
+        2 => "Maggie",
+        3 => "Cain",
+        4 => "Judas",
+        5 => "???",
+        6 => "Eve",
+        7 => "Samson",
+        8 => "Azazel",
+        9 => "Lazarus",
+        10 => "Eden",
+        11 => "Lost",
+    ];
+
+    private $progresses = [
+        1 => "Mom's Heart",
+        2 => "Isaac",
+        3 => "Satan",
+        4 => "Boss Rush",
+        5 => "???",
+        6 => "The Lamb"
+    ];
+
     private $items = [
         1 =>  "The Sad Onion",
         2 =>  "The Inner Eye",
@@ -63,7 +86,7 @@ class Catalogue
         56 => "Lemon Mishap",
         57 => "Distant Admiration",
         58 => "Book of Shadows",
-        // 59 ?????
+        // 59 ??? Wiggle worm ???
         60 => "The Ladder",
         62 => "Charm of the Vampire",
         63 => "The Battery",
@@ -843,6 +866,11 @@ class Catalogue
         return $this->bosses;
     }
 
+    public function characters()
+    {
+        return $this->characters;
+    }
+
     public function endings()
     {
         return $this->endings;
@@ -858,6 +886,11 @@ class Catalogue
         return $this->miniBosses;
     }
 
+    public function progresses()
+    {
+        return $this->progresses;
+    }
+
     // -- Getters (single) -----------------------------------------------------
 
     public function achievement($id)
@@ -868,6 +901,11 @@ class Catalogue
     public function boss($id)
     {
         return isset($this->bosses[$id]) ? $this->bosses[$id] : null;
+    }
+
+    public function character($id)
+    {
+        return isset($this->characters[$id]) ? $this->characters[$id] : null;
     }
 
     public function ending($id)
@@ -884,5 +922,9 @@ class Catalogue
     {
         return isset($this->miniBosses[$id]) ? $this->miniBosses[$id] : null;
     }
-}
 
+    public function progress($id)
+    {
+        return isset($this->progresses[$id]) ? $this->progresses[$id] : null;
+    }
+}

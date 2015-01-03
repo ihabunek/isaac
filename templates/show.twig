@@ -7,11 +7,13 @@
     <h2>Savegame info</h2>
 
     <h4>Jump to:</h4>
+    <a class="btn btn-primary btn-xs" href="#Progress">Progress</a>
     <a class="btn btn-primary btn-xs" href="#Stats">Stats</a>
     <a class="btn btn-primary btn-xs" href="#Bosses">Bosses</a>
     <a class="btn btn-primary btn-xs" href="#Items">Items</a>
     <a class="btn btn-primary btn-xs" href="#Achievements">Achievements</a>
 
+    {% include 'show_progress.twig' %}
     {% include 'show_stats.twig' %}
     {% include 'show_bosses.twig' %}
     {% include 'show_items.twig' %}

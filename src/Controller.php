@@ -21,11 +21,16 @@ class Controller
     {
         $dirPath = __DIR__ . '/../var/saves';
 
+        $sort = function (SplFileInfo $a, SplFileInfo $b) {
+            return strcmp($b->getCTime(), $a->getCTime());
+        };
+
         // Find recent uploads
         $finder = new Finder();
         $finder->files()
             ->in($dirPath)
-            ->date('since yesterday');
+            ->date('since yesterday')
+            ->sort($sort);
 
         $recents = [];
         foreach ($finder as $file) {
@@ -35,8 +40,12 @@ class Controller
             ];
         }
 
-        return $app['twig']->render("index.twig", [
+        $content = $app['twig']->render("index.twig", [
             "recents" => $recents
+        ]);
+
+        return new Response($content, 200, [
+            'Cache-Control' => 's-maxage=300'
         ]);
     }
 

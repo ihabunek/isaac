@@ -20,7 +20,9 @@ class SaveGame
         247 => 'death_card_uses',
         255 => 'arcades_entered',
         259 => 'deaths',
+        263 => 'isaac_kills',
         267 => 'shopkeepers_exploded',
+        // 271 ??? incresed after dark room win
         275 => 'shell_game_played',
         279 => 'angel_deals',
         283 => 'devil_deals',
@@ -30,16 +32,20 @@ class SaveGame
         303 => 'eden_tokens',
         307 => 'win_streak',
         311 => 'best_streak',
+        315 => 'blue_baby_kills',
+        319 => 'lamb_kills',
+        591 => 'boss_rush_wins',
         599 => 'loss_streak',
-        619 => 'boss_kills_1',
-        623 => 'boss_kills_2',
-        627 => 'boss_kills_3',
-        631 => 'boss_kills_4',
-        635 => 'boss_kills_5',
-        639 => 'boss_kills_6',
-        643 => 'boss_kills_7',
-        647 => 'boss_kills_8',
-        651 => 'boss_kills_9',
+        619 => 'boss_kills_01',
+        623 => 'boss_kills_02',
+        627 => 'boss_kills_03',
+        631 => 'boss_kills_04',
+        635 => 'boss_kills_05',
+        639 => 'boss_kills_06',
+        643 => 'boss_kills_07',
+        647 => 'boss_kills_08',
+        651 => 'boss_kills_09',
+        659 => 'boss_kills_10',
         1163 => 'win_count',
     ];
 
@@ -68,6 +74,11 @@ class SaveGame
     public function catalogue()
     {
         return $this->catalogue;
+    }
+
+    public function offsets()
+    {
+        return $this->offsets;
     }
 
     public function stats()

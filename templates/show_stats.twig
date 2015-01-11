@@ -19,8 +19,8 @@
             <tr><td>Arcades exploded</td><td>{{ save.stats["arcades_exploded"] }}</td></tr>
             <tr><td>Coins donated</td><td>{{ save.stats["coins_donated"] }}</td></tr>
         </table >
-
     </div>
+
     <div class="col-md-4">
         <h4>Wins &amp; losses</h4>
         <table class="table table-hover table-condensed">
@@ -28,22 +28,24 @@
             <tr><td>Current win streak</td><td>{{ save.stats["win_streak"] }}</td></tr>
             <tr><td>Current loss streak</td><td>{{ save.stats["loss_streak"] }}</td></tr>
             <tr><td>Best win streak</td><td>{{ save.stats["best_streak"] }}</td></tr>
-            <tr><td>Win count</td><td>{{ save.stats["win_count"] }}</td></tr>
+            <tr><td>Wins</td><td>{{ save.stats["win_count"] }}</td></tr>
             <tr><td>Deaths</td><td>{{ save.stats["deaths"] }}</td></tr>
-            <tr><td>Mom kills</td><td>{{ save.stats["mom_kills"] }}</td></tr>
             <tr><td>Eden tokens</td><td>{{ save.stats["eden_tokens"] }}</td></tr>
+            <tr><td>Lost unlock level</td><td>{{ save.stats["lost_unlock"] }}</td></tr>
         </table >
 
         <h4>End boss kills</h4>
         <table class="table table-hover table-condensed">
             <col width="80%" />
+            <tr><td>Mom's heart</td><td>{{ save.stats["mom_kills"] }}</td></tr>
+            <tr><td>Boss Rush</td><td>{{ save.stats["boss_rush_wins"] }}</td></tr>
             <tr><td>Isaac</td><td>{{ save.stats["isaac_kills"] }}</td></tr>
             <tr><td>???</td><td>{{ save.stats["blue_baby_kills"] }}</td></tr>
-            <tr><td>Boss Rush</td><td>{{ save.stats["boss_rush_wins"] }}</td></tr>
+            <tr><td>Satan</td><td>{{ save.stats["satan_kills"] }}</td></tr>
             <tr><td>Lamb</td><td>{{ save.stats["lamb_kills"] }}</td></tr>
         </table>
-
     </div>
+
     <div class="col-md-4">
         <h4>Floors cleared</h4>
         <table class="table table-hover table-condensed">

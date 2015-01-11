@@ -1,0 +1,5 @@
+<?php
+
+$app['debug'] = false;
+
+$app['ga_code'] = null;

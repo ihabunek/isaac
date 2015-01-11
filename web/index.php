@@ -11,7 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = new Application();
-$app['debug'] = true;
+
+$settings = __DIR__ . '/../etc/settings.php';
+if (file_exists($settings)) {
+    include $settings;
+}
 
 // -- Providers ----------------------------------------------------------------
 
@@ -28,6 +32,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), [
 ]);
 
 $app->before(function (Request $request) use ($app) {
+    $app['twig']->addGlobal('app', $app);
     $app['twig']->addGlobal('current_path', $request->getPathInfo());
 });
 

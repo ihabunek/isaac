@@ -18,6 +18,29 @@ class Catalogue
         11 => "Lost",
     ];
 
+    private $challanges = [
+        1 => "Pitch Black",
+        2 => "High Brow",
+        3 => "Head Trauma",
+        4 => "Darkness Falls",
+        5 => "The Tank",
+        6 => "Solar System",
+        7 => "Suicide King",
+        8 => "Cat Got Your Tongue",
+        9 => "Demo Man",
+        10 => "Cursed!",
+        11 => "Glass Cannon",
+        12 => "When Life Gives You Lemons",
+        13 => "BEANS!",
+        14 => "Its In The Cards",
+        15 => "Slow Roll",
+        16 => "Computer Savy",
+        17 => "WAKA WAKA",
+        18 => "The Host",
+        19 => "The Family Man",
+        20 => "Purist",
+    ];
+
     private $progresses = [
         1 => "Mom's Heart",
         2 => "Isaac",
@@ -864,6 +887,11 @@ class Catalogue
     public function bosses()
     {
         return $this->bosses;
+    }
+
+    public function challanges()
+    {
+        return $this->challanges;
     }
 
     public function characters()

@@ -1,0 +1,23 @@
+<h2 id="Challanges">Challanges</h2>
+
+<table class="table table-hover table-condensed">
+    <col width="10%" />
+    <col width="70%" />
+    <col width="20%" />
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Defeated</th>
+    </tr>
+    {% for challangeID, bool in save.challanges %}
+        <tr>
+            <td>{{ challangeID }}</td>
+            <td>{{ catalogue.challanges[challangeID] }}</td>
+            <td>
+                {% if save.challanges[challangeID] %}
+                    <span class="glyphicon glyphicon-ok text-success"></span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>

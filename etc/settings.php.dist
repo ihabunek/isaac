@@ -1,5 +1,9 @@
 <?php
 
-$app['debug'] = false;
+$settings['debug'] = false;
 
-$app['ga_code'] = null;
+$settings['cache'] = false;
+
+$settings['ga_code'] = null;
+
+$settings['maintenance'] = false;

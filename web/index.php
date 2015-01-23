@@ -7,14 +7,31 @@ use BigFish\PDF417\PDF417;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = new Application();
 
-$settings = __DIR__ . '/../etc/settings.php';
-if (file_exists($settings)) {
-    include $settings;
+// -- Settings -----------------------------------------------------------------
+
+// Default settings
+$settings = [
+    'debug' => false,
+    'cache' => false,
+    'ga_code' => null,
+    'maintenance' => false
+];
+
+$path = __DIR__ . '/../etc/settings.php';
+if (file_exists($path)) {
+    include $path;
+}
+
+$app['settings'] = $settings;
+
+if ($settings['debug']) {
+    $app['debug'] = true;
 }
 
 // -- Providers ----------------------------------------------------------------
@@ -65,10 +82,21 @@ if (extension_loaded('newrelic')) {
     });
 }
 
+// -- Maintenance mode ---------------------------------------------------------
+
+$app->before(function (Request $request) use ($app) {
+    if ($app['settings']['maintenance']) {
+        $msg = '<h1>Binding of Isaac: Rebirth - Savegame parser</h1>';
+        $msg .= '<p>Site is down for maintenance. Check back soon.</p>';
+        return new Response($msg);
+    }
+});
+
 // -- Go! ----------------------------------------------------------------------
 
-Request::setTrustedProxies(['127.0.0.1']);
-
-// $app['http_cache']->run();
-
-$app->run();
+if ($app['settings']['cache']) {
+    Request::setTrustedProxies(['127.0.0.1']);
+    $app['http_cache']->run();
+} else {
+    $app->run();
+}

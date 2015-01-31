@@ -13,7 +13,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $pdo->exec("CREATE TABLE savegame (
                 id serial primary key,
-                hash text,
+                hash text unique,
                 data text,
                 uploaded timestamp
             );");

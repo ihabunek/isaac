@@ -17,28 +17,21 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
  */
 class Controller
 {
+    /**
+     * Database access object.
+     *
+     * @var Bezdomni\IsaacRebirth\Archiver
+     */
+    private $archiver;
+
+    public function __construct(Archiver $archiver)
+    {
+        $this->archiver = $archiver;
+    }
+
     public function indexAction(Application $app)
     {
-        $dirPath = __DIR__ . '/../var/saves';
-
-        $sort = function (SplFileInfo $a, SplFileInfo $b) {
-            return strcmp($b->getCTime(), $a->getCTime());
-        };
-
-        // Find recent uploads
-        $finder = new Finder();
-        $finder->files()
-            ->in($dirPath)
-            ->date('since yesterday')
-            ->sort($sort);
-
-        $recents = [];
-        foreach ($finder as $file) {
-            $recents[] = [
-                "time" => $file->getCTime(),
-                "hash" => $file->getFilename(),
-            ];
-        }
+        $recents = $app['archiver']->recent();
 
         $content = $app['twig']->render("index.twig", [
             "recents" => $recents
@@ -64,52 +57,43 @@ class Controller
         }
 
         // Read the file into memory
-        $fp = $file->openFile();
-        $contents = $fp->fread(4096);
+        $data = $file->openFile()->fread(4096);
+        $hash = md5($data);
+
+        // If file already exists, skip the upload
+        if ($app['archiver']->exists($hash)) {
+            return $app->redirect('/show/' . $hash);
+        }
 
         // Check header
-        $header = substr($contents, 0, 14);
+        $header = substr($data, 0, 14);
         if ($header !== 'ISAACNGSAVE06R') {
             throw new BadRequestHttpException("Invalid file header: \"$header\". Expected \"ISAACNGSAVE06R\". Probably wrong save version.");
         }
 
         // Save the file
-        $md5 = md5($contents);
-        $filePath = __DIR__ . '/../var/saves/' . $md5;
-        if (false === file_put_contents($filePath, $contents)) {
-            throw new \Exception("Failed saving savegame data to $filePath");
-        }
+        $app['archiver']->save($data);
 
         // Redirect to show
-        return $app->redirect('/show/' . $md5);
+        return $app->redirect('/show/' . $hash);
     }
 
-    public function showAction(Application $app, Request $request, $id)
+    public function showAction(Application $app, Request $request, $hash)
     {
-        $dirPath = __DIR__ . '/../var/saves';
-        $filePath = "$dirPath/$id";
-
-        $fileInfo = new SplFileInfo($filePath);
-        if (!$fileInfo->isFile()) {
-            throw new \Exception("Unable to load savegame data.");
+        $record = $app['archiver']->load($hash);
+        if ($record === null) {
+            $app->abort(404, "Savegame not found");
         }
 
-        $ctime = $fileInfo->getCTime();
+        $data = base64_decode($record->data);
+        $save = new SaveGame($data);
 
-        $file = $fileInfo->openFile();
-        $size = $file->getSize();
-        $contents = $file->fread($size);
-
-        $save = new SaveGame($contents);
-
-        $data = [
-            "id" => $id,
+        $content = $app['twig']->render("show.twig", [
+            "hash" => $record->hash,
             "save" => $save,
-            "ctime" => $ctime,
+            "uploaded" => $record->uploaded,
             "catalogue" => $save->catalogue()
-        ];
-
-        $content = $app['twig']->render("show.twig", $data);
+        ]);
 
         return new Response($content, 200, [
             'Cache-Control' => 's-maxage=86400'

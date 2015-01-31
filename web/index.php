@@ -20,7 +20,12 @@ $settings = [
     'debug' => false,
     'cache' => false,
     'ga_code' => null,
-    'maintenance' => false
+    'maintenance' => false,
+    'database' => [
+        'dsn' => 'pgsql:host=localhost;dbname=isaac',
+        'user' => 'root',
+        'pass' => null
+    ]
 ];
 
 $path = __DIR__ . '/../etc/settings.php';
@@ -55,8 +60,28 @@ $app->before(function (Request $request) use ($app) {
 
 // -- Components ---------------------------------------------------------------
 
+$app['pdo'] = $app->share(function() use ($app) {
+    $dsn = $app['settings']['database']['dsn'];
+    $user = $app['settings']['database']['user'];
+    $pass = $app['settings']['database']['pass'];
+
+    $pdo = new PDO($dsn, $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+
+    return $pdo;
+});
+
+$app['archiver'] = $app->share(function() use ($app) {
+    return new Bezdomni\IsaacRebirth\Archiver(
+        $app['pdo']
+    );
+});
+
 $app['controller'] = $app->share(function() use ($app) {
-    return new Bezdomni\IsaacRebirth\Controller();
+    return new Bezdomni\IsaacRebirth\Controller(
+        $app['archiver']
+    );
 });
 
 // -- Routing ------------------------------------------------------------------
@@ -67,8 +92,8 @@ $app->get('/', 'controller:indexAction')
 $app->post('/upload', 'controller:uploadAction')
     ->bind("upload");
 
-$app->get('/show/{id}', 'controller:showAction')
-    ->assert('id', '[0-9a-f]{32}')
+$app->get('/show/{hash}', 'controller:showAction')
+    ->assert('hash', '[0-9a-f]{32}')
     ->bind("show");
 
 

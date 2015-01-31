@@ -48,8 +48,8 @@
         <tbody>
             {% for recent in recents %}
             <tr>
-                <td><a href="{{ path("show", { id: recent.hash }) }}">{{ recent.hash }}</a></td>
-                <td>{{ recent.time|date }}</td>
+                <td><a href="{{ path("show", { hash: recent.hash }) }}">{{ recent.hash }}</a></td>
+                <td>{{ recent.uploaded }}</td>
             </tr>
             {% endfor %}
         </tbody>

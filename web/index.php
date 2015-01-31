@@ -96,6 +96,9 @@ $app->get('/show/{hash}', 'controller:showAction')
     ->assert('hash', '[0-9a-f]{32}')
     ->bind("show");
 
+$app->get('/download/{hash}', 'controller:downloadAction')
+    ->assert('hash', '[0-9a-f]{32}')
+    ->bind("download");
 
 // -- New Relic ----------------------------------------------------------------
 

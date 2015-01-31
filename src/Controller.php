@@ -99,4 +99,19 @@ class Controller
             'Cache-Control' => 's-maxage=86400'
         ]);
     }
+
+    public function downloadAction(Application $app, Request $request, $hash)
+    {
+        $record = $app['archiver']->load($hash);
+        if ($record === null) {
+            $app->abort(404, "Savegame not found");
+        }
+
+        $data = base64_decode($record->data);
+
+        return new Response($data, 200, [
+            'Cache-Control' => 's-maxage=86400',
+            'Content-Disposition' => 'attachment; filename=persistentgamedataX.dat'
+        ]);
+    }
 }

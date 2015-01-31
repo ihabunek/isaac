@@ -2,35 +2,39 @@
 
 {% block content %}
 
-    <p>Upload your save game and I'll tell you some stats.</p>
+    <p>Upload your save game file and I'll tell you some stats, as well as list
+    missing items and achievements.</p>
 
     <p>This is a work in progress. Stats are found by playing the game and
     looking what's changed after each save. Report any problems by creating
     an <a target="_blank" href="https://github.com/ihabunek/isaac/issues">issue on github.</a>
     </p>
 
-    <p>Tested with savegame format produced by BOIR version 1.04. Your
+    <p>Tested with savegame format produced by BOIR version 1.04x. Your
     savegame should be exactly 4K large and start with the string
     <code>ISAACNGSAVE06R</code>.</p>
 
     <div class="alert alert-warning" role="alert">
-        Contains spoilers! All characters, items, achievements and bosses are
+        <b>Caution</b>: Contains spoilers! All characters, items, achievements and bosses are
         listed.
     </div>
 
-    <h3>Upload your save</h3>
+    <p>Savegame files are named <code>persistentgamedata#.dat</code>.</p>
 
-    <p>Savegame locations: </p>
+    <p>Savegame locations when installed via Steam:</p>
     <ul>
-        <li>Windows: <code>c:\Program Files (x86)\Steam\userdata\********\250900\remote\</code></li>
         <li>Linux: <code>~/.local/share/Steam/userdata/********/250900/remote/</code></li>
+        <li>Mac: <code>~/Library/Application Support/Steam/userdata/********/250900/remote</code></li>
+        <li>Windows: <code>c:\Program Files (x86)\Steam\userdata\********\250900\remote\</code></li>
     </ul>
+
+    <h3>Upload your save</h3>
 
     <form action="/upload" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="savegame">Save game file</label>
             <input type="file" name="savegame" id="savegame">
-            <p class="help-block">Upload your savegame (<code>persistentgamedata*.dat</code>).</p>
+            {# <p class="help-block">Upload your savegame (<code>persistentgamedata*.dat</code>).</p> #}
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

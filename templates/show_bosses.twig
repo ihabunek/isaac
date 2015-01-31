@@ -10,13 +10,13 @@ being beaten.</p>
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Defeated</th>
+        <th class="text-center">Defeated</th>
     </tr>
     {% for bossID, bool in save.bosses %}
         <tr>
             <td>{{ bossID }}</td>
             <td>{{ catalogue.bosses[bossID] }}</td>
-            <td>
+            <td class="text-center">
                 {% if save.bosses[bossID] %}
                     <span class="glyphicon glyphicon-ok text-success"></span>
                 {% endif %}

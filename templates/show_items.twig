@@ -15,7 +15,7 @@
         <th>ID</th>
         <th>Image</th>
         <th>Name</th>
-        <th>Acquired</th>
+        <th class="text-center">Acquired</th>
     </tr>
     {% for itemID, bool in save.items %}
         {% set acquired = save.items[itemID] %}
@@ -23,7 +23,7 @@
             <td>{{ itemID }}</td>
             <td><div class="item item-{{itemID}}"></div></td>
             <td>{{ catalogue.items[itemID] }}</td>
-            <td>
+            <td class="text-center">
                 {% if acquired %}
                     <span class="glyphicon glyphicon-ok text-success"></span>
                 {% endif %}

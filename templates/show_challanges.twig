@@ -7,13 +7,13 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Defeated</th>
+        <th class="text-center">Defeated</th>
     </tr>
     {% for challangeID, bool in save.challanges %}
         <tr>
             <td>{{ challangeID }}</td>
             <td>{{ catalogue.challanges[challangeID] }}</td>
-            <td>
+            <td class="text-center">
                 {% if save.challanges[challangeID] %}
                     <span class="glyphicon glyphicon-ok text-success"></span>
                 {% endif %}

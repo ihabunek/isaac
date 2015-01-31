@@ -15,7 +15,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Hint</th>
-        <th>Acquired</th>
+        <th class="text-center">Acquired</th>
     </tr>
     {% for achievementID, bool in save.achievements %}
         {% set acquired = save.achievements[achievementID] %}
@@ -23,7 +23,7 @@
             <td>{{ achievementID }}</td>
             <td>{{ catalogue.achievements[achievementID] }}</td>
             <td>{{ catalogue.achievementHints[achievementID] }}</td>
-            <td>
+            <td class="text-center">
                 {% if acquired %}
                     <span class="glyphicon glyphicon-ok text-success"></span>
                 {% endif %}

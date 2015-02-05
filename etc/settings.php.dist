@@ -7,3 +7,9 @@ $settings['cache'] = false;
 $settings['ga_code'] = null;
 
 $settings['maintenance'] = false;
+
+$settings['database'] = [
+    'dsn' => 'pgsql:host=localhost;dbname=isaac',
+    'user' => 'root',
+    'pass' => '',
+];

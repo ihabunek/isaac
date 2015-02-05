@@ -42,22 +42,26 @@
 
     <h3>Recent uploads</h3>
 
-    <table class="table table-compact table-hover">
-        <thead>
-            <tr>
-                <th>Hash</th>
-                <th>Uploaded</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for recent in recents %}
-            <tr>
-                <td><a href="{{ path("show", { hash: recent.hash }) }}">{{ recent.hash }}</a></td>
-                <td>{{ recent.uploaded }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    {% if recents %}
+        <table class="table table-compact table-hover">
+            <thead>
+                <tr>
+                    <th>Hash</th>
+                    <th>Uploaded</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recent in recents %}
+                <tr>
+                    <td><a href="{{ path("show", { hash: recent.hash }) }}">{{ recent.hash }}</a></td>
+                    <td>{{ recent.uploaded }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No recent uploads found.</p>
+    {% endif %}
 
     <h3>Privacy policy</h3>
 

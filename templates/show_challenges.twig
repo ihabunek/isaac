@@ -1,4 +1,4 @@
-<h2 id="Challanges">Challanges</h2>
+<h2 id="Challenges">Challenges</h2>
 
 <table class="table table-hover table-condensed">
     <col width="10%" />
@@ -9,12 +9,12 @@
         <th>Name</th>
         <th class="text-center">Defeated</th>
     </tr>
-    {% for challangeID, bool in save.challanges %}
+    {% for challengeID, bool in save.challenges %}
         <tr>
-            <td>{{ challangeID }}</td>
-            <td>{{ catalogue.challanges[challangeID] }}</td>
+            <td>{{ challengeID }}</td>
+            <td>{{ catalogue.challenges[challengeID] }}</td>
             <td class="text-center">
-                {% if save.challanges[challangeID] %}
+                {% if save.challenges[challengeID] %}
                     <span class="glyphicon glyphicon-ok text-success"></span>
                 {% endif %}
             </td>

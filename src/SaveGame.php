@@ -10,7 +10,7 @@ class SaveGame
     const ITEMS = 676;
     const MINI_BOSSES = 1035;
     const BOSSES = 1054;
-    const CHALLANGES = 1123;
+    const CHALLENGES = 1123;
 
     private $offsets = [
         227 => 'mom_kills',
@@ -86,7 +86,7 @@ class SaveGame
     public function stats()
     {
         $stats = [];
-        foreach ($this->offsets as $offset => $name){
+        foreach ($this->offsets as $offset => $name) {
             $stats[$name] = $this->getLong($offset);
         }
         return $stats;
@@ -120,10 +120,10 @@ class SaveGame
         return $this->many($catalogue, self::BOSSES);
     }
 
-    public function challanges()
+    public function challenges()
     {
-        $catalogue = $this->catalogue->challanges();
-        return $this->many($catalogue, self::CHALLANGES);
+        $catalogue = $this->catalogue->challenges();
+        return $this->many($catalogue, self::CHALLENGES);
     }
 
     public function items()

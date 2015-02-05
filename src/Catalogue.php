@@ -18,7 +18,7 @@ class Catalogue
         11 => "Lost",
     ];
 
-    private $challanges = [
+    private $challenges = [
         1 => "Pitch Black",
         2 => "High Brow",
         3 => "Head Trauma",
@@ -827,29 +827,6 @@ class Catalogue
         178 => "Become Lord of the Flies",
     ];
 
-    private $challenges = [
-        1 => "Pitch Black",
-        2 => "High Brow",
-        3 => "Head Trauma",
-        4 => "Darkness Falls",
-        5 => "The Tank",
-        6 => "Solar System",
-        7 => "Suicide King",
-        8 => "Cat Got Your Tongue",
-        9 => "Demo Man",
-        10 => "Cursed!",
-        11 => "Glass Cannon",
-        12 => "When Life Gives You Lemons",
-        13 => "BEANS!",
-        14 => "Its In The Cards",
-        15 => "Slow Roll",
-        16 => "Computer Savy",
-        17 => "WAKA WAKA",
-        18 => "The Host",
-        19 => "The Family Man",
-        20 => "Purist",
-    ];
-
     private $endings = [
         1 => "Intro",
         2 => "Credits",
@@ -889,9 +866,9 @@ class Catalogue
         return $this->bosses;
     }
 
-    public function challanges()
+    public function challenges()
     {
-        return $this->challanges;
+        return $this->challenges;
     }
 
     public function characters()

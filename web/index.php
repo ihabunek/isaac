@@ -5,6 +5,7 @@ use BigFish\Hub3\Api\Validator;
 use BigFish\Hub3\Api\Worker;
 use BigFish\PDF417\PDF417;
 
+use Bezdomni\IsaacRebirth\UserException;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -109,6 +110,20 @@ if (extension_loaded('newrelic')) {
         newrelic_name_transaction($request->get("_route"));
     });
 }
+
+// -- Error hadling ------------------------------------------------------------
+
+// Display a user friendly error for UserExcetpions
+$app->error(function (UserException $ex) use ($app) {
+    return $app['twig']->render("error.twig", compact('ex'));
+});
+
+// Log uncaught errors
+$app->error(function (Exception $ex) use ($app) {
+    if (extension_loaded('newrelic')) {
+        newrelic_notice_error($ex->getMessage(), $ex);
+    }
+});
 
 // -- Maintenance mode ---------------------------------------------------------
 

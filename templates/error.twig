@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <h3 class="text-danger">An error ocurred</h3>
+
+    <div class="alert alert-danger" role="alert">
+        {{ ex.getMessage() }}
+    </div>
+
+    <p><a href="{{ url('index') }}">Go back</a></p>
+
+{% endblock %}

@@ -47,22 +47,27 @@ class Controller
         // Read file from request
         $file = $request->files->get('savegame');
         if ($file === null) {
-            throw new BadRequestHttpException("Savegame data not found in request.");
+            throw new UserException("Savegame data not found in request. Did you
+                chose a savegame before pressing Submit?");
         }
 
         // Read the file into memory
         $data = $file->openFile()->fread(4096);
+
+        // Check header
+        $header = substr($data, 0, 14);
+        if ($header !== 'ISAACNGSAVE06R') {
+            throw new UserException("Invalid file header: \"$header\". Expected
+                \"ISAACNGSAVE06R\". You either uploaded a file wich is not a
+                BOIR savegame, or the savegame version is not supported.");
+        }
+
+        // Calculate the hash which is used to identify the savegame
         $hash = md5($data);
 
         // If file already exists, skip the upload
         if ($app['archiver']->exists($hash)) {
             return $app->redirect('/show/' . $hash);
-        }
-
-        // Check header
-        $header = substr($data, 0, 14);
-        if ($header !== 'ISAACNGSAVE06R') {
-            throw new BadRequestHttpException("Invalid file header: \"$header\". Expected \"ISAACNGSAVE06R\". Probably wrong save version.");
         }
 
         // Save the file

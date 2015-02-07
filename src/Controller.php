@@ -50,12 +50,6 @@ class Controller
             throw new BadRequestHttpException("Savegame data not found in request.");
         }
 
-        // Check size
-        $size = $file->getSize();
-        if ($size !== 4096) {
-            throw new BadRequestHttpException("Unexpected savegame file size: $size B. Expected 4096 B.");
-        }
-
         // Read the file into memory
         $data = $file->openFile()->fread(4096);
         $hash = md5($data);

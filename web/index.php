@@ -9,6 +9,7 @@ use Bezdomni\IsaacRebirth\UserException;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -115,7 +116,16 @@ if (extension_loaded('newrelic')) {
 
 // Display a user friendly error for UserExcetpions
 $app->error(function (UserException $ex) use ($app) {
-    return $app['twig']->render("error.twig", compact('ex'));
+    return $app['twig']->render("error.twig", [
+        "message" => $ex->getMessage()
+    ]);
+});
+
+// Handle not found exceptions
+$app->error(function (NotFoundHttpException $ex) use ($app) {
+    return $app['twig']->render("error.twig", [
+        "message" => "Sorry, the page you are looking for could not be found."
+    ]);
 });
 
 // Log uncaught errors

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Processes the barcode request and forms a response.
@@ -47,8 +48,10 @@ class Controller
         // Read file from request
         $file = $request->files->get('savegame');
         if ($file === null) {
-            throw new UserException("Savegame data not found in request. Did you
-                chose a savegame before pressing Submit?");
+            throw new BadRequestHttpException(
+                "Savegame data not found in request. Did you chose a savegame
+                before pressing Submit?"
+            );
         }
 
         // Read the file into memory
@@ -57,9 +60,11 @@ class Controller
         // Check header
         $header = substr($data, 0, 14);
         if ($header !== 'ISAACNGSAVE06R') {
-            throw new UserException("Invalid file header: \"$header\". Expected
-                \"ISAACNGSAVE06R\". You either uploaded a file wich is not a
-                BOIR savegame, or the savegame version is not supported.");
+            throw new BadRequestHttpException(
+                "Invalid file header. A savegame file should start with the
+                string `ISAACNGSAVE06R`.\n\nYou either uploaded a file wich is
+                not a BOIR savegame, or the savegame version is not supported."
+            );
         }
 
         // Calculate the hash which is used to identify the savegame
@@ -81,7 +86,7 @@ class Controller
     {
         $record = $app['archiver']->load($hash);
         if ($record === null) {
-            $app->abort(404, "Savegame not found");
+            throw new NotFoundHttpException("Savegame not found");
         }
 
         $data = base64_decode($record->data);
@@ -103,7 +108,7 @@ class Controller
     {
         $record = $app['archiver']->load($hash);
         if ($record === null) {
-            $app->abort(404, "Savegame not found");
+            throw new NotFoundHttpException("Savegame not found");
         }
 
         $data = base64_decode($record->data);

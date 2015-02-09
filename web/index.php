@@ -5,11 +5,12 @@ use BigFish\Hub3\Api\Validator;
 use BigFish\Hub3\Api\Worker;
 use BigFish\PDF417\PDF417;
 
-use Bezdomni\IsaacRebirth\UserException;
 use Silex\Application;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -114,8 +115,8 @@ if (extension_loaded('newrelic')) {
 
 // -- Error hadling ------------------------------------------------------------
 
-// Display a user friendly error for UserExcetpions
-$app->error(function (UserException $ex) use ($app) {
+// Display a user friendly error for bad requests
+$app->error(function (BadRequestHttpException $ex) use ($app) {
     return $app['twig']->render("error.twig", [
         "message" => $ex->getMessage()
     ]);

@@ -30,14 +30,24 @@
     <h3>Upload your save</h3>
 
     <form action="/upload" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="savegame">Save game file</label>
-            <input type="file" name="savegame" id="savegame">
-            {# <p class="help-block">Upload your savegame (<code>persistentgamedata*.dat</code>).</p> #}
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-primary btn-file">
+                    Browse&hellip; <input type="file" name="savegame" />
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+            <span class="input-group-btn">
+                <input type="submit" class="btn btn-primary" value="Upload" />
+            </span>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        <div id="error-block">
 
+        </div>
+        <span class="help-block">
+            Select a savegame file and hit Upload.
+        </span>
+    </form>
 
     <h3>Recent uploads</h3>
 
@@ -66,4 +76,31 @@
 
     <p>All uploaded files are made public. However, no personal data is
     collected, displayed or forwarded.</p>
+{% endblock %}
+
+{% block tail %}
+<script type="text/javascript">
+
+
+    $(document).ready( function() {
+        // When a file is selected show it in the text box
+        $('input:file').on('change', function(event) {
+            var file = $(this).val()
+                .replace(/\\/g, '/')
+                .replace(/.*\//, '');
+
+            $('input:text').val(file);
+        });
+
+        // Don't allow an empty form to be submitted
+        $('input:submit').on('click', function(event) {
+            var input = $('input:file').get(0);
+            if (input.files.length == 0) {
+                event.preventDefault();
+                alert("No file selected");
+            }
+        });
+    });
+
+</script>
 {% endblock %}

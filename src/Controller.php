@@ -54,7 +54,15 @@ class Controller
             );
         }
 
-        // Read the file into memory
+        // // Check upload was successful
+        if ($file->getError() !==  UPLOAD_ERR_OK) {
+            throw new BadRequestHttpException(
+                "An error occured while uploading your savegame. Please try
+                again and report the problem if it persists."
+            );
+        }
+
+        // Read the data
         $data = $file->openFile()->fread(4096);
 
         // Check header

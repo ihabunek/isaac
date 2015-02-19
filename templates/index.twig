@@ -2,13 +2,10 @@
 
 {% block content %}
 
-    <p>Upload your save game file and I'll tell you some stats, as well as list
-    missing items and achievements.</p>
-
-    <p>This is a work in progress. Stats are found by playing the game and
-    looking what's changed after each save. Report any problems by creating
-    an <a target="_blank" href="https://github.com/ihabunek/isaac/issues">issue on github.</a>
-    </p>
+    <p>Upload your <a target="_blank" href="http://bindingofisaac.com/">Binding
+    of Isaac: Rebirth</a> savegame file and I'll tell you some stats, as well as
+    list missing items and achievements. To see an example, have a look at one
+    of the recently uploaded savegames below.</p>
 
     <p>Tested with savegame format produced by BOIR versions 1.04x and 1.05. Your
     savegame should start with the string <code>ISAACNGSAVE06R</code>.</p>
@@ -17,6 +14,8 @@
         <b>Caution</b>: Contains spoilers! All characters, items, achievements and bosses are
         listed.
     </div>
+
+    <h3>Locate your savegame</h3>
 
     <p>Savegame files are named <code>persistentgamedata#.dat</code>.</p>
 
@@ -49,7 +48,7 @@
         </span>
     </form>
 
-    <h3>Recent uploads</h3>
+    <h3 id="Recent_uploads">Recent uploads</h3>
 
     {% if recents %}
         <table class="table table-compact table-hover">
@@ -72,6 +71,16 @@
         <p>No recent uploads found.</p>
     {% endif %}
 
+    <h3>About</h3>
+
+    <p>Stats are found manually, by playing the game and looking what's changed
+    in the savegame file after each save.</p>
+
+    <p>Report any problems by creating an
+    <a target="_blank" href="https://github.com/ihabunek/isaac/issues">issue on
+    github</a> or by contacting me on reddit, I'm
+    <a target="_blank" href="http://reddit.com/u/bezdomni">/u/bezdomni</a></p>
+
     <h3>Privacy policy</h3>
 
     <p>All uploaded files are made public. However, no personal data is
@@ -80,7 +89,6 @@
 
 {% block tail %}
 <script type="text/javascript">
-
 
     $(document).ready( function() {
         // When a file is selected show it in the text box

@@ -3,6 +3,8 @@ Isaac Savegame Parser
 
 A savegame parser for Binding of Isaac: Rebirth
 
+See it in action at [isaac.bezdomni.net](http://isaac.bezdomni.net/).
+
 Database setup
 --------------
 
